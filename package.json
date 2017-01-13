@@ -1,0 +1,13 @@
+{
+  "name": "oa-mobile",
+  "version": "0.1.0",
+  "author": "chen.cheng",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0"
+  }
+}

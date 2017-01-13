@@ -1,0 +1,40 @@
+#login .content {
+  color: #fff;
+  background: url('../../images/bg_login.jpg') center center;
+  background-size: 100%;
+}
+
+.card {
+  background-color: transparent;
+  margin-top: 30%;
+  margin-bottom: 30%;
+}
+
+.card img.logo {
+  width: 70%;
+}
+
+.page-login ul {
+  background-color: transparent;
+}
+
+.page-login i {
+  font-size: .85rem;
+}
+
+.page-login .list-block li .item-inner {
+  border-bottom: 1px solid #777;
+}
+
+.page-login .list-block input {
+  color: #fff;
+}
+
+.button.button-fill.button-big {
+  line-height: 2.0rem;
+  height: 2.0rem;
+  border-radius: 1rem;
+}
+.list-block {
+  margin: .75rem;
+}
