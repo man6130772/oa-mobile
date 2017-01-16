@@ -1,8 +1,8 @@
-define(['css!loginedCSS'], function () {
-  function page() {
-    this.init = function () {
-      console.log(3);
+define(['css!loginedCSS', 'swiper'], function() {
+    function page() {
+        this.init = function() {
+            $(".swiper-container").swiper();
+        }
     }
-  }
-  return new page();
+    return new page();
 });

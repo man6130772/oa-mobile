@@ -2,59 +2,94 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OA首页</title>
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <script type='text/javascript' src='../../resources/boot.js'></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OA首页</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="../../resources/boot.js"></script>
 </head>
 
 <body style="display: none;">
-  <div class="page" id="logined">
-    <header class="bar bar-nav bg-blue">
-      <h1 class="title text-white">OA首页</h1>
-    </header>
-    <div class="content">
-      <div class="bar bar-tab app-bar-menu">
-        <a class="tab-item active" href="#">
-          <span class="icon icon-home"></span>
-          <span class="tab-label">首页</span>
-        </a>
-        <a class="tab-item" href="#">
-          <span class="icon icon-home"></span>
-          <span class="tab-label">创建</span>
-        </a>
-        <a class="tab-item" href="#">
-          <span class="icon icon-star"></span>
-          <span class="tab-label">通讯录</span>
-        </a>
-        <a class="tab-item" href="#">
-          <span class="icon icon-settings"></span>
-          <span class="tab-label">我的</span>
-        </a>
-      </div>
+    <div class="page" id="logined">
+        <header class="bar bar-nav bg-blue b-b-none">
+            <h1 class="title text-white">OA首页</h1>
+        </header>
+        <div class="content">
+            <div class="app-list-panel">
+                <div class="app-subtitle list-block m-t-none m-b-none">
+                    <ul class="b-t-none b-b-none">
+                        <li class="item-content p-l-xxs">
+                            <div class="item-media">
+                                <div class="app-color-tips bg-orange"></div>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">常用功能</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="app-bar-menu bar bar-tab">
+                    <a class="tab-item active" href="#">
+                        <span class="icon icon-home"></span>
+                        <span class="tab-label">流程</span>
+                    </a>
+                    <a class="tab-item" href="#">
+                        <span class="icon icon-home"></span>
+                        <span class="tab-label">会议</span>
+                    </a>
+                    <a class="tab-item" href="#">
+                        <span class="icon icon-star"></span>
+                        <span class="tab-label">考勤</span>
+                    </a>
+                    <a class="tab-item" href="#">
+                        <span class="icon icon-settings"></span>
+                        <span class="tab-label">咨询</span>
+                    </a>
+                </div>
+            </div>
+            <div class="app-list-panel m-t-sm">
+                <div class="app-subtitle list-block m-t-none m-b-none">
+                    <ul class="b-t-none b-b-none">
+                        <li class="item-content p-l-xxs">
+                            <div class="item-media">
+                                <div class="app-color-tips bg-blue"></div>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">图展</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="swiper-container" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                        <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="bar bar-tab">
+            <a class="tab-item active" href="#">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">创建</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-star"></span>
+                <span class="tab-label">通讯录</span>
+            </a>
+            <a class="tab-item" href="#">
+                <span class="icon icon-settings"></span>
+                <span class="tab-label">我的</span>
+            </a>
+        </nav>
     </div>
-    <nav class="bar bar-tab">
-      <a class="tab-item active" href="#">
-        <span class="icon icon-home"></span>
-        <span class="tab-label">首页</span>
-      </a>
-      <a class="tab-item" href="#">
-        <span class="icon icon-home"></span>
-        <span class="tab-label">创建</span>
-      </a>
-      <a class="tab-item" href="#">
-        <span class="icon icon-star"></span>
-        <span class="tab-label">通讯录</span>
-      </a>
-      <a class="tab-item" href="#">
-        <span class="icon icon-settings"></span>
-        <span class="tab-label">我的</span>
-      </a>
-    </nav>
-  </div>
 </body>
 
 </html>

@@ -22,29 +22,35 @@ const MIMETYPE = {
     "wma": "audio/x-ms-wma",
     "wmv": "video/x-ms-wmv",
     "xml": "text/xml"
-}
+};
 
 let server = http.createServer((req, res) => {
     let pathname = url.parse(req.url).pathname;
     console.log(`收到来自：${pathname}的请求！`);
-    fs.exists(pathname, (exist) => {
-        if (!exist) {
-            res.write(404, {
+    let realPath = path.join(__dirname, pathname);
+    fs.access(realPath, function(err) {
+        let thisFun = arguments.callee;
+        if (err) {
+            if (realPath.indexOf('lg7') > -1) {
+                realPath = path.join(__dirname, '../' + pathname);
+                fs.access(realPath, thisFun);
+                return;
+            }
+            res.writeHead(404, {
                 'Content-Type': 'text/plain'
             });
             res.write('404\n Not Found! \n');
             res.end();
         } else {
-            let ext = path.extname(pathname);
+            let ext = path.extname(realPath);
             ext = ext ? ext.slice(1) : 'unknown';
-            let contetType = MimeType[ext] || 'text/plain';
+            let contetType = MIMETYPE[ext] || 'text/plain';
             fs.readFile(realPath, "binary", (err, file) => {
                 res.writeHead(200, {
                     'Content-Type': contetType
                 });
                 res.write(file, "binary");
                 res.end();
-                fs.readFile();
             });
         }
     });
