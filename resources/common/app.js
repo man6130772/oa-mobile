@@ -15,16 +15,19 @@ require.config({
         'iconfont': './fonts/iconfont' + min,
         'router': './common/router' + min,
         'vue': './common/vue' + min,
+        'commoncss': './common/common' + min,
 
 
         // 注册js
         'login': './js/login/login' + min,
         'logined': './js/login/logined' + min,
+        'flowIndex': './js/flow/index' + min,
         'meeting': './js/meeting/meeting' + min,
 
         // 注册css
         'loginCSS': './css/login/login' + min,
         'loginedCSS': './css/login/logined' + min,
+        'flowIndexCSS': './css/flow/index' + min,
         'meetingCSS': './css/meeting/meeting' + min,
     },
     shim: {
@@ -45,13 +48,13 @@ require([
 ], function($) {
     $.config = {
         autoInit: false
-    }
+    };
     require(['ui'], function() {
         $(document).off('pageInit').on('pageInit', function(e, pageId, $page) {
             $(document.body).show();
         });
         require(['router'], function() {
             $.init();
-        })
+        });
     });
 });

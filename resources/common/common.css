@@ -1,0 +1,46 @@
+.bg-blue {
+    background: #0894ec;
+}
+
+.bg-orange {
+    background: orange;
+}
+
+.bg-deeppink {
+    background: deeppink;
+}
+
+.bg-springgreen {
+    background: springgreen;
+}
+
+.color-red {
+    color: red !important;
+}
+
+.color-limegreen {
+    color: limegreen
+}
+
+.color-cadetblue {
+    color: cadetblue
+}
+
+.color-springgreen {
+    color: springgreen
+}
+
+.color-darkorange {
+    color: darkorange
+}
+
+.color-white,
+.bar .button-link.color-white {
+    color: #fff;
+}
+
+.dot:before {
+    padding: 0 .15rem;
+    color: #f00;
+    content: '\2022';
+}

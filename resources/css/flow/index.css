@@ -1,0 +1,17 @@
+.app-item-icon {
+    font-size: .85rem;
+}
+
+.app-item-icon:before {
+    padding: 0 .25rem;
+}
+
+.app-create-flow .button {
+    height: 2rem;
+    line-height: 2rem;
+    color: rgb(61, 65, 69);
+}
+
+.app-create-flow .icon-jia:before {
+    color: #0894ec;
+}

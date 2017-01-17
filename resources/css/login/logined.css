@@ -1,9 +1,5 @@
-.bg-blue {
-    background: #0894ec;
-}
-
-.bg-orange {
-    background: orange
+.app-logined-content {
+    bottom: 2.5rem;
 }
 
 .app-color-tips {
@@ -14,9 +10,35 @@
 .app-bar-menu {
     position: static;
     background-color: #fff;
+    padding-top: .35rem;
     padding-bottom: .5rem;
     height: auto;
     transition-duration: initial;
+}
+
+.app-bar-menu .tab-item .iconfont {
+    top: .15rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+}
+
+.app-bar-menu .iconfont {
+    position: relative;
+    z-index: 20;
+    padding: .5rem .1rem;
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+
+.app-bar-menu .tab-item .iconfont~.tab-label {
+    position: relative;
+    top: .15rem;
+    display: block;
+    font-size: .55rem;
 }
 
 .app-subtitle.list-block .item-content {
@@ -31,4 +53,41 @@
     padding-bottom: 0;
     padding-top: 0;
     min-height: 1.8rem;
+}
+
+.app-subtitle.list-block .item-link {
+    -webkit-transition-duration: initial;
+    -o-transition-duration: initial;
+    transition-duration: initial;
+}
+
+.app-galary-swiper {
+    padding: .25rem;
+    padding-top: 0;
+    background: #fff;
+}
+
+.app-galary-swiper .swiper-container {
+    padding-bottom: .25rem;
+}
+
+.app-galary-swiper .swiper-pagination {
+    text-align: right;
+    bottom: 2px;
+}
+
+.app-galary-swiper .swiper-container-horizontal>.swiper-pagination .swiper-pagination-bullet {
+    margin: 0 3px;
+}
+
+.app-galary-swiper .swiper-pagination-bullet {
+    border: 1px solid #777;
+}
+
+.app-galary-swiper .swiper-pagination-bullet-active {
+    background: #058;
+}
+
+.app-list-panel .list-block.sortable-opened .item-link .item-inner {
+    padding-right: .25rem;
 }
