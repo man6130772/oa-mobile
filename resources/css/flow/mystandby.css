@@ -1,0 +1,20 @@
+.app-list-panel .card {
+    margin: .5rem 0 0 0;
+}
+
+.app-list-panel .card:first-child {
+    margin: 0;
+}
+
+.app-list-panel .card-header {
+    padding: .25rem;
+    min-height: 1rem;
+}
+
+.app-list-panel .card-header .iconfont {
+    font-size: .85rem;
+}
+
+.app-list-panel .card-content-inner {
+    padding: .25rem;
+}

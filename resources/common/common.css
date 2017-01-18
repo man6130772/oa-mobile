@@ -44,3 +44,15 @@
     color: #f00;
     content: '\2022';
 }
+
+.badge-dot:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: .35rem;
+    width: .35rem;
+    border-radius: 100%;
+    background: #f00;
+    z-index: 10;
+    content: '';
+}

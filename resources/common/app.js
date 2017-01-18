@@ -22,13 +22,13 @@ require.config({
         'login': './js/login/login' + min,
         'logined': './js/login/logined' + min,
         'flowIndex': './js/flow/index' + min,
-        'meeting': './js/meeting/meeting' + min,
+        'mystandby': './js/flow/mystandby' + min,
 
         // 注册css
         'loginCSS': './css/login/login' + min,
         'loginedCSS': './css/login/logined' + min,
         'flowIndexCSS': './css/flow/index' + min,
-        'meetingCSS': './css/meeting/meeting' + min,
+        'mystandbyCSS': './css/flow/mystandby' + min
     },
     shim: {
         'ui': {
@@ -53,7 +53,32 @@ require([
         $(document).off('pageInit').on('pageInit', function(e, pageId, $page) {
             $(document.body).show();
         });
-        require(['router'], function() {
+        require(['router'], function(config) {
+            /* 默认绑定 */
+            function handleDocument(name, evt, evtConf) {
+                var pageId = '#' + name;
+                $(document).off(evt, pageId).on(evt, pageId, function(e, pageId, $page) {
+                    require([name], function($page) {
+                        if (evtConf && evtConf.beforeInit) evtConf.beforeInit();
+                        $page.init();
+                        if (evtConf && evtConf.afterInit) evtConf.afterInit();
+                    });
+                });
+            }
+
+            for (var key in config) {
+                if ($.isArray(config[key])) {
+                    $.each(config[key], function(i, evt) {
+                        handleDocument(key, evt);
+                    });
+                }
+                if ($.isPlainObject(config[key])) {
+                    for (var evt in config[key]) {
+                        handleDocument(key, evt, config[key][evt]);
+                    }
+                }
+            }
+
             $.init();
         });
     });
