@@ -16,8 +16,8 @@
 
 ## 3. 开发规范
 > 1. `pages` 文件夹存放HTML页面，新建HTML页面分别存放在 `pages` 文件夹内的已命名文件夹中
-> 2. `resource` 文件夹存放的是oa-mobile相关的静态资源，新建页面相关的静态资源以相同名字在css和js内相对应的文件夹中新建，并在app.js中注册。例如：新建页面 `/pages/login/login.html` ，新建js和css `/resource/js/login/login.js` 和 `/resource/js/login/login.css`
+> 2. `resource` 文件夹存放的是oa-mobile相关的静态资源，新建页面相关的静态资源以相同名字在js和css内相对应的文件夹中新建，并在app.js中注册。例如：新建页面 `/pages/login/login.html` ，新建js和css `/resource/js/login/login.js` 和 `/resource/js/login/login.css`
 > 3. `common` 文件夹存放的是oa-mobile项目的公共js和css
 > 4. `boot.js` 是唯一的HTML加载文件，里面配置了异步加载的流程和公共配置的常量
-> 5. `app.js` 同一注册js和css，便于生产模式的压缩处理。注册方法参考app.js里面的注释说明
+> 5. `app.js` 统一注册js和css，便于生产模式的压缩处理。注册方法参考app.js里面的注释说明
 > 6. `router.js` 是模拟history的路由配置，绑定了 `pageInit` 和 `pageReinit` 事件，用于初始化页面对应的js文件
