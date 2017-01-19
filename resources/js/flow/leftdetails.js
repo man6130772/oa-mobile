@@ -1,4 +1,4 @@
-define(['css!iconfont', 'css!commoncss', 'css!flowIndexCSS'], function() {
+define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(Vue) {
     function page() {
         var that = this;
 

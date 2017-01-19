@@ -1,8 +1,10 @@
-.app-list-panel .card {
+.app-list-panel .card-link {
     margin: .5rem 0 0 0;
+    display: block;
+    color: #6d6d72;
 }
 
-.app-list-panel .card:first-child {
+.app-list-panel .card-link:first-child {
     margin: 0;
 }
 

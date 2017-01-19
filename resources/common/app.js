@@ -23,12 +23,14 @@ require.config({
         'logined': './js/login/logined' + min,
         'flowIndex': './js/flow/index' + min,
         'mystandby': './js/flow/mystandby' + min,
+        'leftdetails': './js/flow/leftdetails' + min,
 
         // 注册css
         'loginCSS': './css/login/login' + min,
         'loginedCSS': './css/login/logined' + min,
         'flowIndexCSS': './css/flow/index' + min,
-        'mystandbyCSS': './css/flow/mystandby' + min
+        'mystandbyCSS': './css/flow/mystandby' + min,
+        'leftdetailsCSS': './css/flow/leftdetails' + min,
     },
     shim: {
         'ui': {

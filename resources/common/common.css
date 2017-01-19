@@ -14,6 +14,10 @@
     background: springgreen;
 }
 
+.bg-gray {
+    background: gray
+}
+
 .color-red {
     color: red !important;
 }
@@ -32,6 +36,10 @@
 
 .color-darkorange {
     color: darkorange
+}
+
+.color-gold {
+    color: gold
 }
 
 .color-white,
@@ -55,4 +63,40 @@
     background: #f00;
     z-index: 10;
     content: '';
+}
+
+.iconfont {
+    font-size: inherit;
+}
+
+.content-nav-bottom {
+    bottom: 2.5rem;
+}
+
+table {
+    background-color: #fff;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table tr {
+    border-bottom: 1px solid #ccc;
+}
+
+table tr:last-child {
+    border-bottom: 0;
+}
+
+table td {
+    border-left: 1px solid #ccc;
+    text-align: left;
+    vertical-align: middle;
+    padding: .25rem;
+}
+
+table tr:first-child {
+    border-left: 0;
 }

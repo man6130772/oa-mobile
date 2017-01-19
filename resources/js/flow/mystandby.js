@@ -3,36 +3,58 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!mystandbyCSS'], function(Vu
         var that = this;
 
         this.init = function() {
-            that.handleClick();
+            // 绑定header的回退事件
+            that.handleBackClick();
 
-            Vue.component('message', {
-                props: ['details'],
-                template: '\
-                    <div class="card no-radius no-shadow">\
-                        <div class="card-header">\
-                            <span>{{details.time}}</span>\
-                            <span :class="[details.favor ? \'icon-xingxingshixin\' : \'icon-xingxingkongxin\']" class="iconfont p-l-xxs p-r-xxs"></span>\
-                        </div>\
-                        <div class="card-content">\
-                            <div class="card-content-inner">{{details.content}}</div>\
-                        </div>\
-                    </div>\
-                '
+            this.createComponent();
+
+            var all = this.renderTab('all');
+            this.reqMsgListData('../../resources/json/msgListTest.json', all);
+
+            var nosee = this.renderTab('nosee');
+            this.reqMsgListData('../../resources/json/msgListTest1.json', nosee);
+        };
+
+        this.reqMsgListData = function(url, vm) {
+            $.getJSON(url, function(data) {
+                vm.msgList = data;
             });
+        };
 
-            var all = new Vue({
-                el: '#all',
+        this.renderTab = function(tabName) {
+            return new Vue({
+                el: '#' + tabName,
                 data: {
-                    msgList: [{
-                        favor: false,
-                        time: '2016-10-16 15:00',
-                        content: '合并升级包部署流程-胡丹婷-2016-11-15（所属地区百丽集团总部 集团信息中心 云贵大区 东北大区 华中大区 西北大区 体育总部 广州地区）'
-                    }]
+                    msgList: []
                 }
             });
         };
 
-        this.handleClick = function() {
+        this.createComponent = function() {
+            Vue.component('message', {
+                props: ['details'],
+                template: '\
+                    <a class="card-link" :href="details.url">\
+                        <div class="card no-margin no-radius no-shadow">\
+                            <div class="card-header">\
+                                <span>{{details.time}}</span>\
+                                <span @click.stop.prevent="handleFavor" :class="[details.favor ? \'icon-xingxingshixin color-gold\' : \'icon-xingxingkongxin\']" class="iconfont p-l-xxs p-r-xxs"></span>\
+                            </div>\
+                            <div class="card-content">\
+                                <div class="card-content-inner">{{details.content}}</div>\
+                            </div>\
+                        </div>\
+                    </a>\
+                ',
+                methods: {
+                    handleFavor: function(event) {
+                        if (this.details) this.details.favor = !this.details.favor;
+                    }
+                }
+            });
+        };
+
+        this.handleBackClick = function() {
             $('.app-btn-back').on('click', function() {
                 history.back();
             });

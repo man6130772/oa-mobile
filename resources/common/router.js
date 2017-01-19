@@ -4,7 +4,8 @@ define(function() {
         login: ['pageInit'],
         logined: ['pageInit'],
         flowIndex: ['pageInit'],
-        mystandby: ['pageInit']
+        mystandby: ['pageInit'],
+        leftdetails: ['pageInit']
     };
 
     return config;
