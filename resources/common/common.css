@@ -18,6 +18,10 @@
     background: gray
 }
 
+.bg-lightgray {
+    background: lightgray
+}
+
 .color-red {
     color: red !important;
 }
@@ -99,4 +103,8 @@ table td {
 
 table tr:first-child {
     border-left: 0;
+}
+
+.flex {
+    display: flex;
 }

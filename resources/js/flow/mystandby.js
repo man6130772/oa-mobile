@@ -6,12 +6,12 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!mystandbyCSS'], function(Vu
             // 绑定header的回退事件
             that.handleBackClick();
 
-            this.createComponent();
+            that.createComponent();
 
-            var all = this.renderTab('all');
+            var all = that.renderTab('all');
             this.reqMsgListData('../../resources/json/msgListTest.json', all);
 
-            var nosee = this.renderTab('nosee');
+            var nosee = that.renderTab('nosee');
             this.reqMsgListData('../../resources/json/msgListTest1.json', nosee);
         };
 

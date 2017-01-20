@@ -1,3 +1,45 @@
 table.app-plain-table td:first-child {
     width: 4rem;
 }
+
+.app-flow-state-item {
+    margin-top: .85rem;
+}
+
+.app-flow-state-item:first-child {
+    margin-top: 0;
+}
+
+.app-flow-state-content {
+    padding: .5rem;
+    line-height: 1.5;
+    font-size: .85rem;
+    position: relative;
+}
+
+.app-flow-state-content:before {
+    content: '';
+    width: .5rem;
+    height: .5rem;
+    background: lightgray;
+    position: absolute;
+    left: 0.85rem;
+    top: -.25rem;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.app-flow-state-title {
+    border-bottom: 1px solid #b7b8b7;
+    padding-bottom: .35rem;
+}
+
+.app-flow-state-title:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.app-flow-state-text:last-child {
+    padding-top: .35rem;
+}
