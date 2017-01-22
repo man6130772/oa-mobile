@@ -58,7 +58,7 @@ table.app-plain-table td:first-child {
     border-bottom: 1px solid #e7e7e7;
 }
 
-.app-flow-refuse-close {
+.app-flow-close {
     position: absolute;
     top: .5rem;
     right: .5rem;
@@ -74,4 +74,24 @@ table.app-plain-table td:first-child {
     position: absolute;
     top: .65rem;
     right: .75rem;
+}
+
+.app-flow-all-list ul {
+    border-bottom: 0;
+    max-height: 10rem;
+    overflow-y: auto;
+}
+
+.app-flow-all-list li {
+    margin-bottom: .35rem;
+}
+
+.app-flow-all-list li:last-child {
+    argin-bottom: 0;
+}
+
+.app-flow-all-list p {
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left;
 }

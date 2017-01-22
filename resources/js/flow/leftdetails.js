@@ -17,6 +17,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
             var flowState = that.renderFlowState('flowState');
             this.reqFlowStateData('../../resources/json/flowState.json', flowState);
 
+            that.handleCheckAllFlow();
             that.handleAllowClick();
             that.handleRefuseClick();
         };
@@ -155,6 +156,48 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
             });
         };
 
+        this.handleCheckAllFlow = function() {
+            $('#checkAllFlow').click(function() {
+                $.modal({
+                    text: '<div class="text-left b-b-1 m-t-lg"><span>浏览所有意见</span></div>',
+                    afterText: '\
+                        <span class="app-flow-close iconfont icon-cha"></span>\
+                        <div id="allFlowList" class="app-flow-all-list list-block m-t-none m-b-none">\
+                            <ul class="m-t-xs b-t-none b-b-none color-gray">\
+                                <li>\
+                                    <p>2016-09-07 16:20</p>\
+                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
+                                </li>\
+                                <li>\
+                                    <p>2016-09-07 16:20</p>\
+                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
+                                </li>\
+                                <li>\
+                                    <p>2016-09-07 16:20</p>\
+                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
+                                </li>\
+                                <li>\
+                                    <p>2016-09-07 16:20</p>\
+                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
+                                </li>\
+                                <li>\
+                                    <p>2016-09-07 16:20</p>\
+                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
+                                </li>\
+                                <li>\
+                                    <p>2016-09-07 16:20</p>\
+                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
+                                </li>\
+                            </ul>\
+                        </div>\
+                    '
+                });
+                $('.app-flow-close').click(function() {
+                    $.closeModal();
+                });
+            });
+        };
+
         this.handleAllowClick = function() {
             $('#flowAllow').on('click', function(e) {
                 $.modal({
@@ -163,7 +206,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
                 });
                 var timer = setInterval(function() {
                     var count = $('#backCount').text();
-                    if (count > 0) $('#backCount').text(--count)
+                    if (count > 0) $('#backCount').text(--count);
                     if (count === 0) {
                         clearInterval(timer);
                         $.closeModal();
@@ -176,9 +219,9 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
         this.handleRefuseClick = function() {
             $('#flowRefuse').on('click', function(e) {
                 $.modal({
-                    text: '<div class=" m-t-lg"><span class="color-red">驳回</span> 此请假申请！</div>',
+                    text: '<div class="m-t-lg"><span class="color-red">驳回</span> 此请假申请！</div>',
                     afterText: '\
-                        <span class="app-flow-refuse-close iconfont icon-cha"></span>\
+                        <span class="app-flow-close iconfont icon-cha"></span>\
                         <div class="app-flow-refuse list-block m-t-xs m-b-none">\
                             <ul class="b-t-none b-b-none">\
                                 <li>\
@@ -209,11 +252,26 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
                         <p><a id="refuseConfirm" href="javascript:;" class="button bg-blue color-white">确认</a></p>\
                     '
                 });
-                $('.app-flow-refuse-close').click(function() {
+                $('.app-flow-close').click(function() {
                     $.closeModal();
                 });
+                $('#refuseConfirm').click(function() {
+                    $.modal({
+                        text: '<span class="iconfont icon-dui color-limegreen icon-big p-r-sm"></span>已驳回！',
+                        afterText: '<p class="app-modal-remarks"><span id="backCount" class="color-red">2</span> 秒后跳转【我的待办】</p>'
+                    });
+                    var timer = setInterval(function() {
+                        var count = $('#backCount').text();
+                        if (count > 0) $('#backCount').text(--count);
+                        if (count === 0) {
+                            clearInterval(timer);
+                            $.closeModal();
+                            history.back();
+                        }
+                    }, 1000);
+                });
             });
-        }
+        };
     }
     return new page();
 });

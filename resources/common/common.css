@@ -15,11 +15,15 @@
 }
 
 .bg-gray {
-    background: gray
+    background: gray;
 }
 
 .bg-lightgray {
     background: lightgray
+}
+
+.color-gray {
+    color: gray;
 }
 
 .color-red {
@@ -27,23 +31,23 @@
 }
 
 .color-limegreen {
-    color: limegreen
+    color: limegreen;
 }
 
 .color-cadetblue {
-    color: cadetblue
+    color: cadetblue;
 }
 
 .color-springgreen {
-    color: springgreen
+    color: springgreen;
 }
 
 .color-darkorange {
-    color: darkorange
+    color: darkorange;
 }
 
 .color-gold {
-    color: gold
+    color: gold;
 }
 
 .color-white,
