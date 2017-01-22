@@ -21,3 +21,7 @@
 > 4. `boot.js` 是唯一的HTML加载文件，里面配置了异步加载的流程和公共配置的常量
 > 5. `app.js` 统一注册js和css，便于生产模式的压缩处理。注册方法参考app.js里面的注释说明
 > 6. `router.js` 是模拟history的路由配置，绑定了 `pageInit` 和 `pageReinit` 事件，用于初始化页面对应的js文件
+
+---
+
+[demo](https://man6130772.github.io/oa-mobile/)
