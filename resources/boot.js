@@ -36,7 +36,7 @@ var v = '0.1.0', // 版本信息                                                
     isDev = true, // true开发环境、false生产环境
     staticUrl = isDev ? 'http://' + location.host + '/' : 'http://devstatic.qxclub.cn/', // 公共静态资源路径
     min = isDev ? '' : '.min',
-    lg7Version = isDev ? 'lg7-1.0.1/dist/' : 'lg7/1.0.1/';
+    lg7Version = isDev ? 'lg7/dist/' : 'lg7/1.0.1/';
 /**
  ********* end *********
  */
