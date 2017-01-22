@@ -27,6 +27,7 @@ const MIMETYPE = {
 let server = http.createServer((req, res) => {
     let pathname = url.parse(req.url).pathname;
     console.log(`收到来自：${pathname}的请求！`);
+    if (pathname == "/") pathname = "/index.html";
     let realPath = path.join(__dirname, pathname);
     fs.access(realPath, function(err) {
         let thisFun = arguments.callee;
