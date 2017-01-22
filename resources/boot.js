@@ -31,12 +31,13 @@ function __CreateJSPath(js) {
  *  环境变量
  ********* start *********
  */
-var v = '0.1.0', // 版本信息                                                              // lg7版本
+var v = '0.1.0', // 版本信息
     basePath = __CreateJSPath("boot.js"), // oa-mobile资源目录
+    protocol = basePath.indexOf("https:") == -1 ? 'http://' : 'https://', //网络协议
     isDev = true, // true开发环境、false生产环境
-    staticUrl = isDev ? 'http://' + location.host + '/' : 'http://devstatic.qxclub.cn/', // 公共静态资源路径
-    min = isDev ? '' : '.min',
-    lg7Version = isDev ? 'lg7/dist/' : 'lg7/1.0.1/';
+    staticUrl = isDev ? protocol + location.host + '/' : 'http://devstatic.qxclub.cn/', // 公共静态资源路径
+    min = isDev ? '' : '.min', //是否使用压缩版
+    lg7Version = isDev ? 'lg7/dist/' : 'lg7/1.0.1/'; // lg7版本
 /**
  ********* end *********
  */
