@@ -4,6 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>预览 oa-mobile app</title>
+    <script>
+        if (navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+            location.href = location.href + 'pages/login/login.html';
+        }
+    </script>
     <style>
         body {
             margin: 0;
