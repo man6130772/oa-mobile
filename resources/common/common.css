@@ -101,7 +101,7 @@ table td {
     padding: .25rem;
 }
 
-table tr:first-child {
+table td:first-child {
     border-left: 0;
 }
 
