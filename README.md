@@ -3,9 +3,9 @@
 ## 1. 下载项目
 > 首先下载oa-mobile和lg7两个项目文件，放在同一目录底下，文件名如下图
 
-![](http://ojx5001x4.bkt.clouddn.com/oa_teach_01.png)
+![](http://ojx5001x4.bkt.clouddn.com/oa_teach_02.png)
 
-\* 注意：lg7文件名要与boot.js内的常量保持一致，因为lg7是公共静态资源，所以暂时带上版本号
+\* 注意：lg7文件名要与boot.js内的常量保持一致，lg7是公共静态资源，请参考：[https://github.com/man6130772/lg7](https://github.com/man6130772/lg7)
 
 ---
 
