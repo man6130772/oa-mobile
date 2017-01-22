@@ -73,6 +73,10 @@
     font-size: inherit;
 }
 
+.modal-inner {
+    background: #fff;
+}
+
 .content-nav-bottom {
     bottom: 2.5rem;
 }
@@ -107,4 +111,8 @@ table td:first-child {
 
 .flex {
     display: flex;
+}
+
+.icon-big {
+    font-size: 1.5rem;
 }

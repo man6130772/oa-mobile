@@ -43,3 +43,35 @@ table.app-plain-table td:first-child {
 .app-flow-state-text:last-child {
     padding-top: .35rem;
 }
+
+.app-modal-remarks {
+    margin: 0;
+    padding-top: .35rem;
+    border-top: 1px solid lightgray;
+}
+
+.app-flow-refuse.list-block .item-inner {
+    border-bottom: 0;
+}
+
+.app-flow-refuse.list-block .item-input {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.app-flow-refuse-close {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+}
+
+.item-caret:after {
+    font-family: "iconfont-sm" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+    content: "\e610";
+    font-size: .35rem;
+    position: absolute;
+    top: .65rem;
+    right: .75rem;
+}
