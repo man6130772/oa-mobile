@@ -5,7 +5,8 @@ define(function() {
         logined: ['pageInit'],
         flowIndex: ['pageInit'],
         mystandby: ['pageInit'],
-        leftdetails: ['pageInit']
+        leftdetails: ['pageInit'],
+        detailitem: ['pageInit']
     };
 
     return config;

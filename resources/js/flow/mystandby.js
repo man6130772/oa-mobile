@@ -55,7 +55,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!mystandbyCSS'], function(Vu
         };
 
         this.handleBackClick = function() {
-            $('.app-btn-back').on('click', function() {
+            $('.app-btn-back').off('click').on('click', function() {
                 history.back();
             });
         };

@@ -8,7 +8,7 @@ define(['css!iconfont', 'css!commoncss', 'css!flowIndexCSS'], function() {
         };
 
         this.handleBackClick = function() {
-            $('.app-btn-back').on('click', function() {
+            $('.app-btn-back').off('click').on('click', function() {
                 history.back();
             });
         };

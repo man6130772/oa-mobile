@@ -24,6 +24,7 @@ require.config({
         'flowIndex': './js/flow/index' + min,
         'mystandby': './js/flow/mystandby' + min,
         'leftdetails': './js/flow/leftdetails' + min,
+        'detailitem': './js/flow/detailitem' + min,
 
         // 注册css
         'loginCSS': './css/login/login' + min,

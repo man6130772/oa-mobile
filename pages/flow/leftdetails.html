@@ -28,7 +28,7 @@
             <div class="content-block m-t-none m-b-none p-l-none p-r-none">
                 <div class="tabs">
                     <div id="flowForm" class="tab active">
-                        <flowform :table-source="tableSource"></flowform>
+                        <flowform :table-source="data"></flowform>
                         <div class="list-block m-t-md m-b-md">
                             <ul class="b-t-none b-b-none">
                                 <li>
@@ -49,7 +49,7 @@
                     <div id="flowState" class="tab">
                         <div class="content-block m-t-md m-b-none">
                             <div class="app-flow-state-list">
-                                <flowstateitem v-for="item in stateList" :item="item"></flowstateitem>
+                                <flowstateitem v-for="item in data" :item="item"></flowstateitem>
                             </div>
                         </div>
                     </div>

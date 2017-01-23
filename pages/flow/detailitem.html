@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>请假明细</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="../../resources/boot.js"></script>
+</head>
+
+<body style="display: none;">
+    <div class="page" id="detailitem">
+        <header class="bar bar-nav bg-blue b-b-none">
+            <button class="app-btn-back button button-link button-nav pull-left color-white">
+                <span class="icon icon-left"></span>
+            </button>
+            <h1 class="title text-white">请假详情</h1>
+        </header>
+        <div class="content">
+            <div id="flowDetailItem" class="app-flow-detail-item">
+                <detailform :table-source="data"></detailform>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

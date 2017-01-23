@@ -11,44 +11,29 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
 
             that.createComponent();
 
-            var flowForm = that.renderFlowForm('flowForm');
-            this.reqFlowFormData('../../resources/json/flowForm.json', flowForm);
+            var flowForm = that.render('flowForm');
+            that.ajaxData('../../resources/json/flowForm.json', flowForm);
 
-            var flowState = that.renderFlowState('flowState');
-            this.reqFlowStateData('../../resources/json/flowState.json', flowState);
+            var flowState = that.render('flowState');
+            that.ajaxData('../../resources/json/flowState.json', flowState);
 
             that.handleCheckAllFlow();
             that.handleAllowClick();
             that.handleRefuseClick();
         };
 
-        this.reqFlowFormData = function(url, vm) {
-            $.getJSON(url, function(data) {
-                vm.tableSource = data;
-            });
-        };
-
-        this.reqFlowStateData = function(url, vm) {
-            $.getJSON(url, function(data) {
-                vm.stateList = data;
-            });
-        };
-
-        this.renderFlowForm = function(id) {
+        this.render = function(id, data) {
             return new Vue({
                 el: '#' + id,
                 data: {
-                    tableSource: {}
+                    data: data || {}
                 }
             });
         };
 
-        this.renderFlowState = function(id) {
-            return new Vue({
-                el: '#' + id,
-                data: {
-                    stateList: []
-                }
+        this.ajaxData = function(url, vm) {
+            $.getJSON(url, function(data) {
+                vm.data = data;
             });
         };
 
@@ -95,7 +80,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
                         <tr>\
                             <td>请假类型</td>\
                             <td class="list-block">\
-                                <a class="item-content item-link p-l-none" href="">\
+                                <a class="item-content item-link p-l-none" :href="typeSource.url">\
                                     <div class="item-inner p-t-none p-b-none b-b-none">\
                                         <div class="item-title">{{typeSource.type}}</div>\
                                     </div>\
@@ -151,49 +136,38 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
         };
 
         this.handleBackClick = function() {
-            $('.app-btn-back').on('click', function() {
+            $('.app-btn-back').off('click').on('click', function() {
                 history.back();
             });
         };
 
         this.handleCheckAllFlow = function() {
             $('#checkAllFlow').click(function() {
-                $.modal({
-                    text: '<div class="text-left b-b-1 m-t-lg"><span>浏览所有意见</span></div>',
-                    afterText: '\
-                        <span class="app-flow-close iconfont icon-cha"></span>\
-                        <div id="allFlowList" class="app-flow-all-list list-block m-t-none m-b-none">\
-                            <ul class="m-t-xs b-t-none b-b-none color-gray">\
-                                <li>\
-                                    <p>2016-09-07 16:20</p>\
-                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
-                                </li>\
-                                <li>\
-                                    <p>2016-09-07 16:20</p>\
-                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
-                                </li>\
-                                <li>\
-                                    <p>2016-09-07 16:20</p>\
-                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
-                                </li>\
-                                <li>\
-                                    <p>2016-09-07 16:20</p>\
-                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
-                                </li>\
-                                <li>\
-                                    <p>2016-09-07 16:20</p>\
-                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
-                                </li>\
-                                <li>\
-                                    <p>2016-09-07 16:20</p>\
-                                    <p><span class="p-r-md">实施组.朱雅倩</span><span>请领导审批</span></p>\
-                                </li>\
-                            </ul>\
-                        </div>\
-                    '
-                });
-                $('.app-flow-close').click(function() {
-                    $.closeModal();
+                var itemTemplate = $.Template7.compile('\
+                    {{#each allFlowList}}\
+                    <li>\
+                        <p>{{time}}</p>\
+                        <p><span class="p-r-md">{{approver}}</span><span>{{response}}</span></p>\
+                    </li>\
+                    {{/each}}\
+                ');
+
+                $.getJSON('../../resources/json/allFlowList.json', function(data) {
+                    var listHTML = itemTemplate({ allFlowList: data });
+                    $.modal({
+                        text: '<div class="text-left b-b-1 m-t-lg"><span>浏览所有意见</span></div>',
+                        afterText: '\
+                            <span class="app-flow-close iconfont icon-cha"></span>\
+                            <div id="allFlowList" class="app-flow-all-list list-block m-t-none m-b-none">\
+                                <ul class="m-t-xs b-t-none b-b-none color-gray">\
+                                    ' + listHTML + '\
+                                </ul>\
+                            </div>\
+                        '
+                    });
+                    $('.app-flow-close').click(function() {
+                        $.closeModal();
+                    });
                 });
             });
         };

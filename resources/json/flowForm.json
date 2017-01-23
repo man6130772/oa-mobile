@@ -7,12 +7,14 @@
     "leftSummary": "调休1天，年假1天",
     "leftType": [{
         "type": "调休",
+        "url": "detailitem.html",
         "startTime": "2016-10-05 09:00",
         "endTime": "2016-10-05 18:00",
         "timeLength": "8小时",
         "reason": "回家"
     }, {
         "type": "年假",
+        "url": "detailitem.html",
         "startTime": "2016-10-06 09:00",
         "endTime": "2016-10-06 18:00",
         "timeLength": "8小时",
