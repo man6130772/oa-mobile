@@ -10,6 +10,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
             that.handleTabClick();
 
             that.createComponent();
+            that.createControlPanel();
 
             var flowForm = that.render('flowForm');
             that.ajaxData('../../resources/json/flowForm.json', flowForm);
@@ -18,8 +19,6 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
             that.ajaxData('../../resources/json/flowState.json', flowState);
 
             that.handleCheckAllFlow();
-            that.handleAllowClick();
-            that.handleRefuseClick();
         };
 
         this.render = function(id, data) {
@@ -119,6 +118,25 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS'], function(
                     </div>\
                 '
             });
+        };
+
+        this.createControlPanel = function() {
+            var back = JSON.parse(sessionStorage.getItem("back"));
+            var lastPage = back[back.length - 1];
+            if (lastPage.pageid === '#inprogress' || lastPage.pageid === '#myapplication' || lastPage.pageid === '#archived') return;
+            $('#leftdetails').append('\
+                <nav class="bar bar-tab" style="display: flex;">\
+                    <div class="full-width p-xs p-l-lg p-r-md">\
+                        <a id="flowRefuse" href="#" class="button no-border bg-gray color-white"><span class="iconfont icon-chehui p-r-xs"></span>驳回</a>\
+                    </div>\
+                    <div class="full-width p-xs p-l-md p-r-lg">\
+                        <a id="flowAllow" href="javascript:;" class="button no-border bg-blue color-white"><span class="iconfont icon-gou p-r-xs"></span>批准</a>\
+                    </div>\
+                </nav>\
+            ');
+            $('#leftdetails .content').addClass('content-nav-bottom');
+            that.handleAllowClick();
+            that.handleRefuseClick();
         };
 
         this.handleTabClick = function() {

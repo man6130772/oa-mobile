@@ -25,6 +25,9 @@ require.config({
         'mystandby': './js/flow/mystandby' + min,
         'leftdetails': './js/flow/leftdetails' + min,
         'detailitem': './js/flow/detailitem' + min,
+        'inprogress': './js/flow/inprogress' + min,
+        'myapplication': './js/flow/myapplication' + min,
+        'archived': './js/flow/archived' + min,
 
         // 注册css
         'loginCSS': './css/login/login' + min,
@@ -32,6 +35,7 @@ require.config({
         'flowIndexCSS': './css/flow/index' + min,
         'mystandbyCSS': './css/flow/mystandby' + min,
         'leftdetailsCSS': './css/flow/leftdetails' + min,
+        'inprogressCSS': './css/flow/inprogress' + min
     },
     shim: {
         'ui': {

@@ -1,0 +1,19 @@
+.app-list-panel .card-link {
+    margin: .5rem 0 0 0;
+    display: block;
+    color: #6d6d72;
+}
+
+.app-list-panel .card-link:first-child {
+    margin: 0;
+}
+
+.app-list-panel .card-header {
+    padding: .25rem;
+    min-height: 1rem;
+}
+
+.app-list-panel .card-content-inner,
+.app-list-panel .card-footer {
+    padding: .25rem;
+}

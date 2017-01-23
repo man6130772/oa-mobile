@@ -6,7 +6,10 @@ define(function() {
         flowIndex: ['pageInit'],
         mystandby: ['pageInit'],
         leftdetails: ['pageInit'],
-        detailitem: ['pageInit']
+        detailitem: ['pageInit'],
+        inprogress: ['pageInit'],
+        myapplication: ['pageInit'],
+        archived: ['pageInit']
     };
 
     return config;
