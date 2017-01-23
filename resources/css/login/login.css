@@ -4,13 +4,13 @@
     background-size: 100%;
 }
 
-.card {
+#login .card {
     background-color: transparent;
     margin-top: 30%;
     margin-bottom: 30%;
 }
 
-.card img.logo {
+#login .card img.logo {
     width: 70%;
 }
 
