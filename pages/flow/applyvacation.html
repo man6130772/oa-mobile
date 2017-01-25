@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>假期申请</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="../../resources/boot.js"></script>
+</head>
+
+<body style="display: none;">
+    <div class="page" id="applyvacation">
+        <header class="bar bar-nav bg-blue b-b-none">
+            <button class="app-btn-back button button-link button-nav pull-left color-white">
+                <span class="icon icon-left"></span>
+            </button>
+            <h1 class="title text-white">假期申请</h1>
+        </header>
+        <div class="content">
+            <div class="buttons-tab">
+                <a href="#flowForm" class="tab-link button active">流程表单</a>
+                <a href="#flowChart" class="tab-link button">流程图</a>
+                <a href="#flowState" class="tab-link button">流程状态</a>
+            </div>
+            <div class="content-block m-t-none m-b-none p-l-none p-r-none">
+                <div class="tabs">
+                    <div id="flowForm" class="tab active">
+                        <flowform-vacation :table-source="data"></flowform-vacation>
+                    </div>
+                    <div id="flowChart" class="tab">
+                        <div class="app-flow-picture m-t-xxs img-full-width">
+                            <img src="../../resources/images/flow-picture.png" alt="liuchengtu">
+                        </div>
+                    </div>
+                    <div id="flowState" class="tab">
+                        <div class="content-block m-t-md m-b-none">
+                            <div class="app-flow-state-list">
+                                <flowstateitem v-for="item in data" :item="item"></flowstateitem>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

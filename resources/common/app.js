@@ -15,6 +15,7 @@ require.config({
         'iconfont': './fonts/iconfont' + min,
         'router': './common/router' + min,
         'vue': './common/vue' + min,
+        'vue.template': './common/vue.template' + min,
         'commoncss': './common/common' + min,
 
 
@@ -28,6 +29,8 @@ require.config({
         'inprogress': './js/flow/inprogress' + min,
         'myapplication': './js/flow/myapplication' + min,
         'archived': './js/flow/archived' + min,
+        'createflow': './js/flow/createflow' + min,
+        'applyvacation': './js/flow/applyvacation' + min,
 
         // 注册css
         'loginCSS': './css/login/login' + min,
@@ -35,7 +38,9 @@ require.config({
         'flowIndexCSS': './css/flow/index' + min,
         'mystandbyCSS': './css/flow/mystandby' + min,
         'leftdetailsCSS': './css/flow/leftdetails' + min,
-        'inprogressCSS': './css/flow/inprogress' + min
+        'inprogressCSS': './css/flow/inprogress' + min,
+        'createflowCSS': './css/flow/createflow' + min,
+        'applyvacationCSS': './css/flow/applyvacation' + min
     },
     shim: {
         'ui': {

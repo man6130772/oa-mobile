@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>我的申请</title>
+    <title>创建流程</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -12,25 +12,27 @@
 </head>
 
 <body style="display: none;">
-    <div class="page" id="myapplication">
+    <div class="page" id="createflow">
         <header class="bar bar-nav bg-blue b-b-none">
             <button class="app-btn-back button button-link button-nav pull-left color-white">
                 <span class="icon icon-left"></span>
             </button>
-            <h1 class="title text-white">我的申请</h1>
+            <h1 class="title text-white">创建流程</h1>
         </header>
-        <div class="bar bar-header-secondary b-b-none">
-            <div class="searchbar p-l-xxs p-r-xxs">
-                <a class="searchbar-cancel">删除</a>
-                <div class="search-input">
-                    <label class="icon icon-search" for="search"></label>
-                    <input type="search" placeholder="搜索" />
-                </div>
-            </div>
-        </div>
         <div class="content">
-            <div id="applicationMsgs" class="app-list-panel">
-                <simplemessage v-for="item in data" :item="item"></simplemessage>
+            <div class="app-list-panel">
+                <div class="content-block-title m-t-md m-l-xxs">常用流程</div>
+                <div class="list-block m-t-none m-b-none">
+                    <ul class="b-t-none b-b-none">
+                        <li>
+                            <a class="item-content item-link p-l-xxs" href="applyvacation.html">
+                                <div class="item-inner">
+                                    <div class="item-title">假期申请</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -9,7 +9,9 @@ define(function() {
         detailitem: ['pageInit'],
         inprogress: ['pageInit'],
         myapplication: ['pageInit'],
-        archived: ['pageInit']
+        archived: ['pageInit'],
+        createflow: ['pageInit'],
+        applyvacation: ['pageInit']
     };
 
     return config;
