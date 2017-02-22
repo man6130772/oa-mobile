@@ -1,0 +1,42 @@
+.imguploader {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+    margin-bottom: -0.5rem;
+}
+
+.upitem,
+.imgitem {
+    position: relative;
+    width: 4.5rem;
+    height: 4rem;
+    border: 1px solid darkgray;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: .5rem;
+    margin-bottom: .5rem;
+}
+
+.imgitem i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: .5rem;
+    background-color: lightgray;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+}
+
+.app-submit {
+    padding: 0 .25rem;
+}
+
+.app-submit .button {
+    height: 2rem;
+    line-height: 2rem;
+    color: #fff;
+}

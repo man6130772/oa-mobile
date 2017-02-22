@@ -27,6 +27,21 @@ const MIMETYPE = {
 let server = http.createServer((req, res) => {
     let pathname = url.parse(req.url).pathname;
     console.log(`收到来自：${pathname}的请求！`);
+    if (pathname == "/fileupload") {
+        req.addListener("data", function(postDataChunk) {
+            console.log(postDataChunk);
+            var test = postDataChunk.toString("base64");
+            var decodeImg = new Buffer(test, 'base64');
+            console.log(Buffer.compare(postDataChunk, decodeImg));
+
+            fs.writeFile('./test.png', decodeImg, function(err) {
+                if (err) { console.log(err); }
+            });
+        });
+        req.addListener("end", function() {
+            console.log("end");
+        });
+    }
     if (pathname == "/") pathname = "/index.html";
     let realPath = path.join(__dirname, pathname);
     fs.access(realPath, function(err) {

@@ -17,6 +17,8 @@ require.config({
         'vue': './common/vue' + min,
         'vue.template': './common/vue.template' + min,
         'commoncss': './common/common' + min,
+        'webuploader': './common/webuploader.html5only' + min,
+        'webuploadercss': './common/webuploader' + min,
 
 
         // 注册js
@@ -72,7 +74,7 @@ require([
                 $(document).off(evt, pageId).on(evt, pageId, function(e, pageId, $page) {
                     require([name], function($page) {
                         if (evtConf && evtConf.beforeInit) evtConf.beforeInit();
-                        $page.init();
+                        $page.init(pageId);
                         if (evtConf && evtConf.afterInit) evtConf.afterInit();
                     });
                 });

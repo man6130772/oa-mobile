@@ -1,4 +1,4 @@
-define(['vue'], function(Vue) {
+define(['vue', 'webuploader', 'css!webuploadercss'], function(Vue, WebUploader) {
 
     // 我的待办 - 消息列表
     Vue.component('mystandbymessage', {
@@ -93,7 +93,7 @@ define(['vue'], function(Vue) {
                     title: '请假时长汇总',
                     text: data.leftSummary,
                     focus: true
-                }]
+                }];
             }
         }
     });
@@ -207,7 +207,7 @@ define(['vue'], function(Vue) {
                     <leftcommonrow v-for="item in rowList" :item="item"></leftcommonrow>\
                     <tr>\
                         <td>附件</td>\
-                        <td></td>\
+                        <td><img-uploader></img-uploader></td>\
                     </tr>\
                 </table>\
             </div>\
@@ -238,6 +238,89 @@ define(['vue'], function(Vue) {
                     focus: true
                 }];
             }
+        }
+    });
+
+    // 创建流程 - 假期申请 - 图片上传
+    Vue.component('img-uploader', {
+        data: function() {
+            return {};
+        },
+        template: '\
+            <div class="imguploader">\
+                <img-uploader-item></img-uploader-item>\
+            </div>\
+        ',
+        methods: {
+
+        }
+    });
+
+    // 创建流程 - 假期申请 - 图片上传单按钮组件
+    Vue.component('img-uploader-item', {
+        props: [],
+        template: '\
+            <div class="upitem iconfont icon-xiangji"></div>\
+        ',
+        mounted: function() {
+            var $wrap = $(this.$parent.$el);
+            var that = this;
+            var uploader = WebUploader.create({
+                // 选完文件后，是否自动上传。
+                auto: false,
+
+                // 提前预处理下个文件
+                prepareNextFile: true,
+
+                // 去重
+                duplicate: true,
+
+                // 分片处理
+                chunked: true,
+
+                // 文件接收服务端。
+                server: 'http://' + location.host + '/fileupload',
+
+                // 选择文件的按钮。可选。
+                // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                pick: this.$el,
+
+                // 只允许选择图片文件。
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/*'
+                }
+            });
+
+            // 把uploader实例传给jquery
+            $wrap.data('uploader', uploader);
+
+            uploader.on('fileQueued', function(file) {
+                var $item = $('<div class="imgitem"><img id="' + file.id + '"><i class="iconfont icon-cha"></i></div>'),
+                    $img = $item.find('img'),
+                    $canelNode = $item.find('i');
+
+                // $list为容器jQuery实例
+                $(that.$el).before($item);
+
+                // 创建缩略图
+                // 如果为非图片文件，可以不用调用此方法。
+                uploader.makeThumb(file, function(error, src) {
+                    if (error) {
+                        $img.replaceWith('<span>不能预览</span>');
+                        return;
+                    }
+
+                    $img.attr('src', src);
+
+                }, $item.width(), $item.height());
+
+                $canelNode.on('click', function() {
+                    uploader.removeFile(file);
+                    $item.remove();
+                });
+            });
         }
     });
 });
