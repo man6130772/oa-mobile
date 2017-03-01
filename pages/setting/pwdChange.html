@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>设置</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="../../resources/boot.js"></script>
+</head>
+
+<body style="display: none;">
+    <div class="page" id="pwdChange">
+        <header class="bar bar-nav bg-blue b-b-none">
+            <button class="app-btn-back button button-link button-nav pull-left color-white">
+                <span class="icon icon-left"></span>
+            </button>
+            <h1 class="title text-white">修改密码</h1>
+        </header>
+        <div class="content">
+            <form class="list-block no-margin" id="pwd-form" action="#" method="post">
+                <ul>
+                    <li>
+                        <div class="item-content bg-white p-l-none">
+                            <div class="item-inner padder-h">
+                                <div class="item-title label">原密码</div>
+                                <div class="item-input">
+                                    <input name="oldPwd" type="text" placeholder="原密码">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content bg-white p-l-none">
+                            <div class="item-inner padder-h">
+                                <div class="item-title label">新密码</div>
+                                <div class="item-input">
+                                    <input name="newPwd" type="text" placeholder="新密码">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content bg-white p-l-none">
+                            <div class="item-inner padder-h">
+                                <div class="item-title label">确认密码</div>
+                                <div class="item-input">
+                                    <input name="surePwd" type="text" placeholder="确认密码">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+
+            <p><a id="pwd-btn" href="#" class="button button-fill">确定</a></p>
+        </div>
+
+        
+    </div>
+</body>
+
+</html>

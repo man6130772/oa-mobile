@@ -3,14 +3,14 @@
 }
 
 .app-color-tips {
-    width: 2px;
+    width: 4px;
     height: .85rem;
 }
 
 .app-bar-menu {
     position: static;
     background-color: #fff;
-    padding-top: .35rem;
+    padding-top: .5rem;
     padding-bottom: .5rem;
     height: auto;
     transition-duration: initial;
@@ -18,12 +18,12 @@
 
 .app-bar-menu .tab-item .iconfont {
     top: .15rem;
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 2.2rem;
+    height: 2.2rem;
     padding-top: 0;
     padding-bottom: 0;
-    font-size: 1.4rem;
-    line-height: 1.4rem;
+    font-size: 2.2rem;
+    line-height: 2.2rem;
 }
 
 .app-bar-menu .iconfont {
@@ -38,11 +38,13 @@
     position: relative;
     top: .15rem;
     display: block;
-    font-size: .55rem;
+    font-size: .7rem;
+    margin-top: -0.15rem;
 }
 
 .app-subtitle.list-block .item-content {
     min-height: 1.8rem;
+    border-bottom: 1px solid #eee;
 }
 
 .app-subtitle.list-block .item-media+.item-inner {
@@ -90,4 +92,5 @@
 
 .app-list-panel .list-block.sortable-opened .item-link .item-inner {
     padding-right: .25rem;
+    min-height: 3rem;
 }

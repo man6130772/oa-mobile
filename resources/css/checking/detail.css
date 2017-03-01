@@ -1,0 +1,31 @@
+#checkingDetail td, #checkingDetail tr {
+    border-color: #F5F5F5;
+    height: 1.2rem;
+    line-height: 1.2rem;
+}
+
+#checkingDetail td {
+    padding-left: 0.45rem;
+}
+
+#checkingDetail .first-col{
+    width: 24%;
+}
+#checkingDetail .sencond-col{
+    width: 38%;
+}
+#checkingDetail .third-col{
+    width: 38%;
+}
+
+#checkingDetail .table-title {
+    background-color: #F5F5F5;
+}
+
+#checkingDetail .abnormal-list td:nth-child(2) {
+    color: red;
+}
+
+#checkingDetail .abnormal-list a:nth-child(2) {
+    margin-left: 1.2rem;
+}

@@ -1,7 +1,9 @@
 let fs = require('fs'),
     http = require('http'),
     url = require('url'),
-    path = require('path');
+    util = require('util'),
+    path = require('path'),
+    formidable = require('formidable');
 
 const MIMETYPE = {
     "css": "text/css",
@@ -27,49 +29,52 @@ const MIMETYPE = {
 let server = http.createServer((req, res) => {
     let pathname = url.parse(req.url).pathname;
     console.log(`收到来自：${pathname}的请求！`);
-    if (pathname == "/fileupload") {
-        req.addListener("data", function(postDataChunk) {
-            console.log(postDataChunk);
-            var test = postDataChunk.toString("base64");
-            var decodeImg = new Buffer(test, 'base64');
-            console.log(Buffer.compare(postDataChunk, decodeImg));
-
-            fs.writeFile('./test.png', decodeImg, function(err) {
-                if (err) { console.log(err); }
-            });
+    if (pathname == "/fileupload" && req.method.toLowerCase() == 'post') {
+        if (!fs.existsSync(path.resolve(__dirname, './fileupload'))) {
+            fs.mkdirSync(path.resolve(__dirname, './fileupload'));
+            console.log('fileupload目录创建成功');
+        }
+        var form = new formidable.IncomingForm({
+            uploadDir: './fileupload',
+            keepExtensions: true
         });
-        req.addListener("end", function() {
-            console.log("end");
+
+        form.parse(req, function(err, fields, files) {
+            res.writeHead(200, { 'content-type': 'application/json' });
+            res.end(JSON.stringify({ "status": 1 }));
+            return;
+        });
+    } else {
+        if (pathname == "/") pathname = "/index.html";
+        let realPath = path.join(__dirname, pathname);
+        fs.access(realPath, function(err) {
+            let thisFun = arguments.callee;
+            if (err) {
+                if (realPath.indexOf('lg7') > -1) {
+                    realPath = path.join(__dirname, '../' + pathname);
+                    fs.access(realPath, thisFun);
+                    return;
+                }
+                res.writeHead(404, {
+                    'Content-Type': 'text/plain'
+                });
+                res.write('404\n Not Found! \n');
+                res.end();
+            } else {
+                let ext = path.extname(realPath);
+                ext = ext ? ext.slice(1) : 'unknown';
+                let contetType = MIMETYPE[ext] || 'text/plain';
+                fs.readFile(realPath, "binary", (err, file) => {
+                    res.writeHead(200, {
+                        'Content-Type': contetType
+                    });
+                    res.write(file, "binary");
+                    res.end();
+                });
+            }
         });
     }
-    if (pathname == "/") pathname = "/index.html";
-    let realPath = path.join(__dirname, pathname);
-    fs.access(realPath, function(err) {
-        let thisFun = arguments.callee;
-        if (err) {
-            if (realPath.indexOf('lg7') > -1) {
-                realPath = path.join(__dirname, '../' + pathname);
-                fs.access(realPath, thisFun);
-                return;
-            }
-            res.writeHead(404, {
-                'Content-Type': 'text/plain'
-            });
-            res.write('404\n Not Found! \n');
-            res.end();
-        } else {
-            let ext = path.extname(realPath);
-            ext = ext ? ext.slice(1) : 'unknown';
-            let contetType = MIMETYPE[ext] || 'text/plain';
-            fs.readFile(realPath, "binary", (err, file) => {
-                res.writeHead(200, {
-                    'Content-Type': contetType
-                });
-                res.write(file, "binary");
-                res.end();
-            });
-        }
-    });
+
 
 });
 

@@ -18,5 +18,9 @@
 }
 
 .app-list-panel .card-content-inner {
-    padding: .25rem;
+    padding: .6rem;
+}
+
+a.card-link:visited {
+    color: #DFDFE0;
 }

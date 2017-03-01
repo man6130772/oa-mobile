@@ -16,14 +16,17 @@ require.config({
         'router': './common/router' + min,
         'vue': './common/vue' + min,
         'vue.template': './common/vue.template' + min,
+        'common': './common/common' + min,
         'commoncss': './common/common' + min,
         'webuploader': './common/webuploader.html5only' + min,
         'webuploadercss': './common/webuploader' + min,
 
 
-        // 注册js
+        /**** 注册js ****/
+        // 登陆
         'login': './js/login/login' + min,
         'logined': './js/login/logined' + min,
+        // 流程
         'flowIndex': './js/flow/index' + min,
         'mystandby': './js/flow/mystandby' + min,
         'leftdetails': './js/flow/leftdetails' + min,
@@ -34,15 +37,51 @@ require.config({
         'createflow': './js/flow/createflow' + min,
         'applyvacation': './js/flow/applyvacation' + min,
 
-        // 注册css
+        // 考勤s
+        'checkingIndex': './js/checking/index' + min,
+        'checkingDetail': './js/checking/detail' + min,
+        'checkingAbnormal': './js/checking/abnormal' + min,
+        // 考勤e
+        // 设置s
+        'settingIndex': './js/setting/index' + min,
+        'msgSetting': './js/setting/msgSetting' + min,
+        'personalInfo': './js/setting/personalInfo' + min,
+        'pwdChange': './js/setting/pwdChange' + min,
+        'userChange': './js/setting/userChange' + min,
+        // 设置e
+        // 通讯录s
+        'contactsIndex': './js/contacts/index' + min,
+        'contactsDetail': './js/contacts/detail' + min,
+        // 通讯录e
+
+        /**** 注册css ****/
+        // 登陆
         'loginCSS': './css/login/login' + min,
         'loginedCSS': './css/login/logined' + min,
+        // 流程
         'flowIndexCSS': './css/flow/index' + min,
         'mystandbyCSS': './css/flow/mystandby' + min,
         'leftdetailsCSS': './css/flow/leftdetails' + min,
         'inprogressCSS': './css/flow/inprogress' + min,
         'createflowCSS': './css/flow/createflow' + min,
-        'applyvacationCSS': './css/flow/applyvacation' + min
+        'applyvacationCSS': './css/flow/applyvacation' + min,
+
+        // 考勤s
+        'checkingIndexCSS': './css/checking/index' + min,
+        'checkingDetailCSS': './css/checking/detail' + min,
+        'checkingAbnormalCSS': './css/checking/abnormal' + min,
+        // 考勤e
+        // 设置s
+        'settingIndexCSS': './css/setting/index' + min,
+        'msgSettingCSS': './css/setting/msgSetting' + min,
+        'personalInfoCSS': './css/setting/personalInfo' + min,
+        'pwdChangeCSS': './css/setting/pwdChange' + min,
+        'userChangeCSS': './css/setting/userChange' + min,
+        // 设置e
+        // 通讯录s
+        'contactsIndexCSS': './css/contacts/index' + min,
+        'contactsDetailCSS': './css/contacts/detail' + min,
+        // 通讯录e
     },
     shim: {
         'ui': {
@@ -74,7 +113,7 @@ require([
                 $(document).off(evt, pageId).on(evt, pageId, function(e, pageId, $page) {
                     require([name], function($page) {
                         if (evtConf && evtConf.beforeInit) evtConf.beforeInit();
-                        $page.init(pageId);
+                        $page.init(e, pageId, $page);
                         if (evtConf && evtConf.afterInit) evtConf.afterInit();
                     });
                 });

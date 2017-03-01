@@ -1,0 +1,104 @@
+{
+    "CYLXR": [
+        {
+            "name": "张三",
+            "department": "实施组",
+            "section": "信息集团中心",
+            "jobPosition": "实施工程师"
+        }, 
+        {
+            "name": "李四",
+            "department": "研发部",
+            "section": "信息集团中心",
+            "jobPosition": "前端工程师"
+        }, 
+        {
+            "name": "王五",
+            "department": "研发部",
+            "section": "集团中心",
+            "jobPosition": "java工程师"
+        }
+    ],
+    "A": [
+        {
+            "name": "张三",
+            "department": "实施组",
+            "section": "信息集团中心",
+            "jobPosition": "实施工程师"
+        }, 
+        {
+            "name": "李四",
+            "department": "研发部",
+            "section": "信息集团中心",
+            "jobPosition": "前端工程师"
+        }, 
+        {
+            "name": "王五",
+            "department": "研发部",
+            "section": "集团中心",
+            "jobPosition": "java工程师"
+        }
+    ],
+    "B": [
+        {
+            "name": "张三",
+            "department": "实施组",
+            "section": "信息集团中心",
+            "jobPosition": "实施工程师"
+        }, 
+        {
+            "name": "李四",
+            "department": "研发部",
+            "section": "信息集团中心",
+            "jobPosition": "前端工程师"
+        }
+    ],
+    "F": [
+        {
+            "name": "张三",
+            "department": "实施组",
+            "section": "信息集团中心",
+            "jobPosition": "实施工程师"
+        }, 
+        {
+            "name": "李四",
+            "department": "研发部",
+            "section": "信息集团中心",
+            "jobPosition": "前端工程师"
+        }
+    ],
+    "L": [
+        {
+            "name": "张三",
+            "department": "实施组",
+            "section": "信息集团中心",
+            "jobPosition": "实施工程师"
+        }, 
+        {
+            "name": "李四",
+            "department": "研发部",
+            "section": "信息集团中心",
+            "jobPosition": "前端工程师"
+        }
+    ],
+    "V": [
+        {
+            "name": "张三",
+            "department": "实施组",
+            "section": "信息集团中心",
+            "jobPosition": "实施工程师"
+        }, 
+        {
+            "name": "李四",
+            "department": "研发部",
+            "section": "信息集团中心",
+            "jobPosition": "前端工程师"
+        }, 
+        {
+            "name": "王五",
+            "department": "研发部",
+            "section": "集团中心",
+            "jobPosition": "java工程师"
+        }
+    ]
+}

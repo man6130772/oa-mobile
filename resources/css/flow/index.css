@@ -1,11 +1,3 @@
-.app-item-icon {
-    font-size: .85rem;
-}
-
-.app-item-icon:before {
-    padding: 0 .25rem;
-}
-
 .app-create-flow .button {
     height: 2rem;
     line-height: 2rem;

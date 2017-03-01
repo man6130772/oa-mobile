@@ -39,3 +39,8 @@
 .page-login .list-block {
     margin: .75rem;
 }
+
+#errTip {
+    color: red;
+    /*visibility: hidden;*/
+}

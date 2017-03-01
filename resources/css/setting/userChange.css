@@ -1,0 +1,42 @@
+
+#userChange .user-change-list li + li {
+    border-top: 1px solid #EFEFEF;
+}
+
+#userChange .user-change-list li {
+    list-style: none;
+    padding: 0.8rem 0.5rem;
+}
+
+#userChange .user-change-list .is-logining {
+    padding: 0.06rem 0.1rem 0;
+    visibility: hidden;
+}
+
+#userChange .user-change-list .login-active .is-logining {
+    visibility: visible;
+}
+
+#userChange .signout {
+    display: block;
+    width: 96%; 
+    height: 2.5rem;
+    background-color: #fff;
+    border: none;
+    margin: 2rem auto 0;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #AEAEAE;
+}
+#userChange .signout i.iconfont {
+    font-size: 1.2rem;
+}
+
+
+
+
+
+
+

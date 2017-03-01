@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>设置</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="../../resources/boot.js"></script>
+</head>
+
+<body style="display: none;">
+    <div class="page" id="settingIndex">
+        <header class="bar bar-nav bg-blue b-b-none">
+            <h1 class="title text-white">我的</h1>
+        </header>
+        <div class="content index-bar-bottom">
+            <div id="personInfo">
+                <person-info :table-source="data"></person-info>
+            </div>
+            <div class="list-block no-margin">
+                <a class="item-content item-link bg-white p-l-none" href="./personalInfo.html">
+                    <div class="item-inner">
+                        <div class="item-title">个人资料</div>
+                    </div>
+                </a>
+                <a class="item-content item-link bg-white p-l-none" href="./userChange.html">
+                    <div class="item-inner">
+                        <div class="item-title">切换账号</div>
+                    </div>
+                </a>
+                <a class="item-content item-link bg-white p-l-none" href="./pwdChange.html">
+                    <div class="item-inner">
+                        <div class="item-title">修改密码</div>
+                    </div>
+                </a>
+                <a class="item-content item-link bg-white p-l-none" href="./msgSetting.html">
+                    <div class="item-inner">
+                        <div class="item-title">设置消息</div>
+                    </div>
+                </a>
+                <a class="item-content bg-white p-l-none" href="#">
+                    <div class="item-inner flex-box flex-items-center flex-justify-start" id="clear-cache">
+                        <div class="item-title color-default">清除缓存</div>
+                        <i class="iconfont m-l-s">&#xe603;</i>
+                    </div>
+                </a>
+                <a class="item-content bg-white p-l-none" id="indexSignout" href="#">
+                    <div class="item-inner">
+                        <div class="item-title color-default">退出登录</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <nav class="bar bar-tab">
+            <a class="tab-item no-transition" href="../login/logined.html">
+                <span class="icon iconfont icon-shouye"></span>
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item no-transition" href="#">
+                <span class="icon iconfont icon-chuangjian"></span>
+                <span class="tab-label">创建</span>
+            </a>
+            <a class="tab-item no-transition" href="../contacts/index.html">
+                <span class="icon iconfont icon-tongxunlu"></span>
+                <span class="tab-label">通讯录</span>
+            </a>
+            <a class="tab-item no-transition active" href="#">
+                <span class="icon iconfont icon-yonghu"></span>
+                <span class="tab-label">我的</span>
+            </a>
+        </nav>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+
+/*#msgSetting .list-block .item-inner {
+    min-height: 3.2rem;
+}*/
+
+#msgSetting .list-block .item-input, #msgSetting .list-block .item-title.label {
+    width: initial;
+}
+
+#msgSetting .label-switch input[type="checkbox"]:checked + .checkbox {
+    background: #528ED4;
+}

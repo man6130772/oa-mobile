@@ -1,4 +1,4 @@
-define(['vue', 'webuploader', 'css!webuploadercss'], function(Vue, WebUploader) {
+define(['vue'], function(Vue) {
 
     // 我的待办 - 消息列表
     Vue.component('mystandbymessage', {
@@ -118,7 +118,7 @@ define(['vue', 'webuploader', 'css!webuploadercss'], function(Vue, WebUploader) 
                     <td>请假类型</td>\
                     <td class="list-block">\
                         <a class="item-content item-link p-l-none" :href="typeSource.url">\
-                            <div class="item-inner p-t-none p-b-none b-b-none">\
+                            <div class="item-inner padder-h p-t-none p-b-none b-b-none">\
                                 <div class="item-title">{{typeSource.type}}</div>\
                             </div>\
                         </a>\
@@ -207,7 +207,10 @@ define(['vue', 'webuploader', 'css!webuploadercss'], function(Vue, WebUploader) 
                     <leftcommonrow v-for="item in rowList" :item="item"></leftcommonrow>\
                     <tr>\
                         <td>附件</td>\
-                        <td><img-uploader></img-uploader></td>\
+                        <td>\
+                            <div class="imguploader">\
+                            </div>\
+                        </td>\
                     </tr>\
                 </table>\
             </div>\
@@ -241,86 +244,357 @@ define(['vue', 'webuploader', 'css!webuploadercss'], function(Vue, WebUploader) 
         }
     });
 
-    // 创建流程 - 假期申请 - 图片上传
-    Vue.component('img-uploader', {
-        data: function() {
-            return {};
-        },
+    // 创建流程 - 假期申请 - 流程表单 + 明细
+    Vue.component('flowform-vacation-detail', {
+        props: ['dataSource'],
         template: '\
-            <div class="imguploader">\
-                <img-uploader-item></img-uploader-item>\
+            <div class="app-flow-vacation">\
+                <flowform-vacation :table-source="dataSource"></flowform-vacation>\
+                <div class="list-block media-list m-t-sm m-b-none">\
+                    <ul class="b-t-none b-b-none">\
+                        <li v-for="item in detailList">\
+                            <a class="item-content item-link p-l-xxs" :href="[item.url]">\
+                                <div class="item-inner">\
+                                    <div class="item-title">{{item.title}}</div>\
+                                    <div class="item-subtitle color-lightgray">{{item.text}}</div>\
+                                </div>\
+                            </a>\
+                        </li>\
+                        <li>\
+                            <a @click="handleIncrease" class="item-content app-create-detail item-link p-l-xxs" href="javascript:;">\
+                                <div class="item-inner">\
+                                    <div class="item-title iconfont icon-jia app-item-icon p-r-xs">增加明细</div>\
+                                </div>\
+                            </a>\
+                        </li>\
+                    </ul>\
+                </div>\
             </div>\
         ',
+        computed: {
+            detailList: function() {
+                return this.dataSource.leftDetails;
+            }
+        },
         methods: {
-
+            handleIncrease: function(e) {
+                var num = this.detailList.length + 1;
+                this.detailList.push({
+                    title: '明细' + num,
+                    url: 'applydetail.html?detail=' + num
+                });
+            }
         }
     });
 
-    // 创建流程 - 假期申请 - 图片上传单按钮组件
-    Vue.component('img-uploader-item', {
-        props: [],
+    // 考勤 - 异常考勤汇总
+    Vue.component('abnormal-checking', {
+        props: ['tableSource'],
         template: '\
-            <div class="upitem iconfont icon-xiangji"></div>\
+            <div>\
+                <table>\
+                    <tr>\
+                        <td class="first-col">正常打卡: </td>\
+                        <td class="sencond-col">{{tableSource.normalPunch}}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>前天未打卡: </td>\
+                        <td>{{tableSource.allNoPunch}}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>上班未打开: </td>\
+                        <td>{{tableSource.morningNoPunch}}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>下班未打卡: </td>\
+                        <td>{{tableSource.afternoonNoPunch}}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>早退: </td>\
+                        <td>{{tableSource.backEarly}}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>迟到: </td>\
+                        <td>{{tableSource.late}}</td>\
+                    </tr>\
+                </table>\
+                <table class="m-t-md">\
+                    <tr>\
+                        <td class="first-col">本月加班合计: </td>\
+                        <td class="sencond-col">{{tableSource.allLeave}}</td>\
+                    </tr>\
+                    <tr>\
+                        <td>本月加班合计: </td>\
+                        <td>{{tableSource.allOvertime}}</td>\
+                    </tr>\
+                </table>\
+            </div>\
+        '
+    });
+
+    // 考勤 - 考勤流水 - item
+    // //0 正常； 1全天未打卡； 2 上午未打卡； 3 下午未打卡
+    Vue.component('punchwater-item', {
+        props: ['item'],
+        template: '\
+            <tr v-bind:class="{ \'abnormal-list\': item.state > 0 }">\
+                <td>{{item.data}}</td>\
+                <td v-if="item.state == 0">正常</td>\
+                <td v-if="item.state == 1">全天未打卡</td>\
+                <td v-if="item.state == 2">上午未打卡</td>\
+                <td v-if="item.state == 3">下午未打卡</td>\
+                <td v-if="item.state == 0 "></td>\
+                <td v-else="item.state > 0 ">\
+                    <a href="#">刷卡说明</a><a href="#">请假</a>\
+                </td>\
+            </tr>\
+        '
+    });
+
+    // 考勤 - 考勤流水 - item
+    Vue.component('punchwater-list', {
+        props: ['tableSource'],
+        template: '\
+            <table>\
+                <tr class="table-title">\
+                    <td class="first-col">日期</td>\
+                    <td class="sencond-col">打卡状态</td>\
+                    <td class="third-col">其他</td>\
+                </tr>\
+                <punchwater-item v-for="item in tableSource" :item="item"></punchwater-item>\
+            </table>\
+        '
+    });
+
+    // 设置 - 个人主页 - 用户信息区域
+    Vue.component('person-info', {
+        props: ['tableSource'],
+        template: '\
+            <div id="user-area">\
+                <img class="user-header" :src="tableSource.headerImg"></img>\
+                <div class="user-name text-white text-center text-xxl m-t-xs">{{tableSource.name}}</div>\
+                <div class="user-position text-white text-center">{{tableSource.section}} {{tableSource.jobPosition}}</div>\
+            </div>\
+        '
+    });
+
+    // 设置 - 个人资料 - 整页
+    Vue.component('user-info', {
+        props: ['tableSource'],
+        template: '\
+            <div>\
+                <div class="list-block no-margin">\
+                    <ul>\
+                        <li class="item-content item-link header-list bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">头像</div>\
+                                <img class="item-after user-header" :src="tableSource.headerImg">\
+                            </div>\
+                        </li>\
+                        <li class="item-content item-link bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">座机</div>\
+                                <div class="item-after">{{tableSource.telephone}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content item-link bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">手机</div>\
+                                <div class="item-after">{{tableSource.mobile}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content item-link bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">邮箱</div>\
+                                <div class="item-after">{{tableSource.email}}</div>\
+                            </div>\
+                        </li>\
+                    </ul>\
+                </div>\
+                <div class="list-block no-margin m-t-md">\
+                    <ul>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">姓名</div>\
+                                <div class="item-after">{{tableSource.name}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">岗位</div>\
+                                <div class="item-after">{{tableSource.jobPosition}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">分部</div>\
+                                <div class="item-after">{{tableSource.section}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">部门</div>\
+                                <div class="item-after">{{tableSource.department}}</div>\
+                            </div>\
+                        </li>\
+                    </ul>\
+                </div>\
+                <div class="list-block no-margin m-t-md">\
+                    <ul>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">上级</div>\
+                                <div class="item-after">{{tableSource.leader}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">状态</div>\
+                                <div class="item-after">{{tableSource.state}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h">\
+                                <div class="item-title">办公</div>\
+                                <div class="item-after">{{tableSource.place}}</div>\
+                            </div>\
+                        </li>\
+                    </ul>\
+                </div>\
+            </div>\
+        '
+    });
+
+    // 设置 - 切换账号 - list
+    Vue.component('user-change-list', {
+        props: ['dataSource'],
+        template: '\
+            <ul class="user-change-list no-margin no-padder bg-white">\
+                <li v-for="item in dataSource" :class="{ \'login-active\': +item.state === 0 }">\
+                    <div>\
+                        <span>{{item.name}}</span>\
+                        <span class="is-logining bg-orange color-white">登录中</span>\
+                    </div>\
+                    <div>{{item.section}} {{item.department}}</div>\
+                </li>\
+            </ul>\
+        '
+    });
+
+    //logined - 首页
+    Vue.component('portal-show', {
+        props: ['dataSource'],
+        template: '\
+            <div>\
+                <div class="app-list-panel m-t-sm">\
+                    <div class="app-subtitle list-block m-t-none m-b-none">\
+                        <ul class="b-t-none b-b-none">\
+                            <li class="item-content p-l-xxs no-border">\
+                                <div class="item-media">\
+                                    <div class="app-color-tips bg-blue"></div>\
+                                </div>\
+                                <div class="item-inner">\
+                                    <div class="item-title">图展</div>\
+                                </div>\
+                            </li>\
+                        </ul>\
+                    </div>\
+                    <div class="app-galary-swiper">\
+                        <div class="swiper-container">\
+                            <div class="swiper-wrapper">\
+                                <div v-for="item in dataSource.imgShow" class="swiper-slide"><img :src="item" alt="ad"></div>\
+                            </div>\
+                            <div class="swiper-pagination"></div>\
+                        </div>\
+                    </div>\
+                </div>\
+                <div class="app-list-panel m-t-sm">\
+                    <div class="app-subtitle list-block m-t-none m-b-none">\
+                        <ul class="b-t-none b-b-none">\
+                            <li class="item-content item-link p-l-xxs">\
+                                <div class="item-media">\
+                                    <div class="app-color-tips bg-deeppink"></div>\
+                                </div>\
+                                <div class="item-inner">\
+                                    <div class="item-title">待办事宜</div>\
+                                </div>\
+                            </li>\
+                        </ul>\
+                    </div>\
+                    <div class="list-block sortable-opened m-t-none m-b-none">\
+                        <ul class="b-t-none b-b-none">\
+                            <li v-for="item in dataSource.standby" class="item-content item-link p-l-xxs">\
+                                <div class="item-inner">\
+                                    <a :href="\'a.html?id=\' + item.id" class="item-title color-default" :class="{dot: item.state == 0}">{{item.title}}</a>\
+                                </div>\
+                            </li>\
+                        </ul>\
+                    </div>\
+                </div>\
+                <div class="app-list-panel m-t-sm">\
+                    <div class="app-subtitle list-block m-t-none m-b-none">\
+                        <ul class="b-t-none b-b-none">\
+                            <li class="item-content item-link p-l-xxs">\
+                                <div class="item-media">\
+                                    <div class="app-color-tips bg-springgreen"></div>\
+                                </div>\
+                                <div class="item-inner">\
+                                    <div class="item-title">通知</div>\
+                                </div>\
+                            </li>\
+                        </ul>\
+                    </div>\
+                    <div class="list-block sortable-opened m-t-none m-b-none">\
+                        <ul class="b-t-none b-b-none">\
+                            <li v-for="item in dataSource.notice"  class="item-content item-link p-l-xxs">\
+                                <a :href="\'a.html?id=\' + item.id" class="item-inner p-r-xxs color-default">\
+                                    <div class="item-title" :class="{dot: item.state == 0}">{{item.title}}</div>\
+                                    <div class="item-after color-gray">{{item.date}}</div>\
+                                </a>\
+                            </li>\
+                        </ul>\
+                    </div>\
+                </div>\
+            </div>\
+        '
+    });
+
+    // 通讯录 - 列表页 - 整页
+    Vue.component('contacts-list', {
+        props: ['dataSource'],
+        template: '\
+            <div class="list-block contacts-block no-margin">\
+                <contact-list v-for="(list, key) in dataSource" :list="list" :key-data="key"></contact-list>\
+            </div>\
+        '
+    });
+
+    // 通讯录 - 列表页 - 列表块
+    Vue.component('contact-list', {
+        props: ['keyData', 'list'],
+        template: '\
+            <div class="list-group">\
+                <ul class="no-border">\
+                    <li class="color-default" :class="{\'common-list-group-title\': isCommon, \'list-group-title\': !isCommon}">{{ keyData }}</li>\
+                    <li class="contact-list" v-for="item in list">\
+                        <a href="#">\
+                            <div class="list-name text-black">{{item.name}}</div>\
+                            <div class="list-info">集团信息中心.CEO</div>\
+                        </a>\
+                    </li>\
+                </ul>\
+            </div>\
         ',
-        mounted: function() {
-            var $wrap = $(this.$parent.$el);
-            var that = this;
-            var uploader = WebUploader.create({
-                // 选完文件后，是否自动上传。
-                auto: false,
-
-                // 提前预处理下个文件
-                prepareNextFile: true,
-
-                // 去重
-                duplicate: true,
-
-                // 分片处理
-                chunked: true,
-
-                // 文件接收服务端。
-                server: 'http://' + location.host + '/fileupload',
-
-                // 选择文件的按钮。可选。
-                // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-                pick: this.$el,
-
-                // 只允许选择图片文件。
-                accept: {
-                    title: 'Images',
-                    extensions: 'gif,jpg,jpeg,bmp,png',
-                    mimeTypes: 'image/*'
+        computed: {
+            isCommon: function() {
+                var key = this.keyData;
+                var list = this.list;
+                if (key === 'CYLXR') {
+                    return 1;
+                } else {
+                    return 0;
                 }
-            });
-
-            // 把uploader实例传给jquery
-            $wrap.data('uploader', uploader);
-
-            uploader.on('fileQueued', function(file) {
-                var $item = $('<div class="imgitem"><img id="' + file.id + '"><i class="iconfont icon-cha"></i></div>'),
-                    $img = $item.find('img'),
-                    $canelNode = $item.find('i');
-
-                // $list为容器jQuery实例
-                $(that.$el).before($item);
-
-                // 创建缩略图
-                // 如果为非图片文件，可以不用调用此方法。
-                uploader.makeThumb(file, function(error, src) {
-                    if (error) {
-                        $img.replaceWith('<span>不能预览</span>');
-                        return;
-                    }
-
-                    $img.attr('src', src);
-
-                }, $item.width(), $item.height());
-
-                $canelNode.on('click', function() {
-                    uploader.removeFile(file);
-                    $item.remove();
-                });
-            });
+            }
         }
     });
 });

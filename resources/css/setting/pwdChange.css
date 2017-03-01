@@ -1,0 +1,19 @@
+
+/*#pwdChange .list-block .item-inner {
+    min-height: 3.2rem;
+}*/
+
+#pwdChange .list-block .item-title.label {
+    width: 25%;
+}
+
+#pwdChange #pwd-btn {
+    height: 1.8rem;
+    line-height: 1.8rem;
+    background-color: #388CD5;
+    width: 96%;
+    margin: 4rem auto 0;
+}
+
+
+

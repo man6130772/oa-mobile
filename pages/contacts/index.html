@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>通讯录</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="../../resources/boot.js"></script>
+</head>
+
+<body style="display: none;">
+    <div class="page" id="contactsIndex">
+        <header class="bar bar-nav bg-blue b-b-none">
+            <h1 class="title text-white">通讯录</h1>
+        </header>
+        <div class="bar bar-header-secondary no-border bg-transparent">
+            <div class="searchbar bg-transparent">
+                <div class="search-input">
+                    <label class="icon icon-search" for="search"></label>
+                    <input type="search" id='search' placeholder='搜索' />
+                </div>
+            </div>
+        </div>
+        <div class="content index-bar-bottom" id="contactsList">
+            <contacts-list :data-source="data"></contacts-list>
+        </div>
+        <nav class="bar bar-tab">
+            <a class="tab-item no-transition" href="../login/logined.html">
+                <span class="icon iconfont icon-shouye"></span>
+                <span class="tab-label">首页</span>
+            </a>
+            <a class="tab-item no-transition" href="#">
+                <span class="icon iconfont icon-chuangjian"></span>
+                <span class="tab-label">创建</span>
+            </a>
+            <a class="tab-item no-transition active" href="#">
+                <span class="icon iconfont icon-tongxunlu"></span>
+                <span class="tab-label">通讯录</span>
+            </a>
+            <a class="tab-item no-transition" href="../setting/index.html">
+                <span class="icon iconfont icon-yonghu"></span>
+                <span class="tab-label">我的</span>
+            </a>
+        </nav>
+    </div>
+</body>
+
+</html>

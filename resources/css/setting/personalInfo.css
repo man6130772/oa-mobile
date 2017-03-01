@@ -1,0 +1,22 @@
+/*#personalInfo .list-block .item-inner {
+    min-height: 3.2rem;
+}*/
+
+#personalInfo .m-t-md {
+    margin-top: 0.85rem !important;
+}
+
+#personalInfo .user-header {
+    width: 2.5rem;
+    height: 2.5rem;
+    max-height: 3.6rem;
+}
+
+#personalInfo .header-list, #personalInfo .header-list .item-inner {
+    height: 3.2rem;
+}
+
+
+
+
+

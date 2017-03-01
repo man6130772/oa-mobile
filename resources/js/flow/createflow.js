@@ -1,4 +1,4 @@
-define(['css!commoncss', 'css!createflowCSS'], function() {
+define(['css!iconfont', 'css!commoncss', 'css!createflowCSS'], function() {
     function page() {
         var that = this;
 

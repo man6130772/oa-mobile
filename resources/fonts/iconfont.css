@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1487127138052'); /* IE9*/
-  src: url('iconfont.eot?t=1487127138052#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1487127138052') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1487127138052') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1487127138052#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1487671920619'); /* IE9*/
+  src: url('iconfont.eot?t=1487671920619#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1487671920619') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1487671920619') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1487671920619#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -15,6 +15,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-tuichu:before { content: "\e600"; }
+
 .icon-dui:before { content: "\e62f"; }
 
 .icon-gou:before { content: "\e669"; }
@@ -22,6 +24,10 @@
 .icon-shizhong:before { content: "\e635"; }
 
 .icon-xiangji:before { content: "\e62e"; }
+
+.icon-loading-copy:before { content: "\e603"; }
+
+.icon-iconset0118:before { content: "\e611"; }
 
 .icon-xingxingkongxin:before { content: "\e645"; }
 
@@ -34,6 +40,8 @@
 .icon-jia:before { content: "\e63a"; }
 
 .icon-dingwei:before { content: "\e61c"; }
+
+.icon-shizhong1:before { content: "\e613"; }
 
 .icon-yonghu:before { content: "\e601"; }
 

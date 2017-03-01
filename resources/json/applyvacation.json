@@ -1,0 +1,17 @@
+{
+    "title": "ZGA0101假期申请流程-黄英-2016-10-18",
+    "formId": "ZG01012016100107",
+    "applicationTime": "2016-10-18",
+    "applicant": "黄英 UX设计师",
+    "totalLeft": "2天",
+    "leftSummary": "调休1天，年假1天",
+    "leftDetails": [{
+        "title": "请假明细 1",
+        "url": "applydetail.html?detail=1",
+        "text": "请假4小时"
+    }, {
+        "title": "请假明细 2",
+        "url": "applydetail.html?detail=2",
+        "text": "调休5小时"
+    }]
+}

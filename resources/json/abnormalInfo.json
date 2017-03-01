@@ -1,0 +1,10 @@
+{
+    "normalPunch": "15天",
+    "allNoPunch": "1次",
+    "morningNoPunch": "1次",
+    "afternoonNoPunch": "1次",
+    "backEarly": "1次",
+    "late": "1次",
+    "allLeave": "事假一天，调休一天",
+    "allOvertime": "8小时"
+}
