@@ -5,6 +5,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!settingIndexCSS', 'common',
 
         this.init = function() {
             checkLogined();
+            console.log(personInfo)
             if(!personInfo) personInfo = that.render('personInfo');
             that.ajaxData(ajaxUrl.personInfo, personInfo);
 
@@ -23,6 +24,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!settingIndexCSS', 'common',
 
         this.ajaxData = function(url, vm) {
             ajaxData('GET', url, function(data) {
+                console.log('vm', vm)
                 vm.data = data;
                 console.log(data)
             });

@@ -20,14 +20,14 @@
             <h1 class="title text-white">修改密码</h1>
         </header>
         <div class="content">
-            <form class="list-block no-margin" id="pwd-form" action="#" method="post">
+            <div class="list-block no-margin" id="pwdForm">
                 <ul>
                     <li>
                         <div class="item-content bg-white p-l-none">
                             <div class="item-inner padder-h">
                                 <div class="item-title label">原密码</div>
                                 <div class="item-input">
-                                    <input name="oldPwd" type="text" placeholder="原密码">
+                                    <input id="oldPwd" type="password" placeholder="原密码">
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                             <div class="item-inner padder-h">
                                 <div class="item-title label">新密码</div>
                                 <div class="item-input">
-                                    <input name="newPwd" type="text" placeholder="新密码">
+                                    <input id="newPwd" type="password" placeholder="新密码">
                                 </div>
                             </div>
                         </div>
@@ -47,15 +47,16 @@
                             <div class="item-inner padder-h">
                                 <div class="item-title label">确认密码</div>
                                 <div class="item-input">
-                                    <input name="surePwd" type="text" placeholder="确认密码">
+                                    <input id="surePwd" type="password" placeholder="确认密码">
                                 </div>
                             </div>
                         </div>
                     </li>
                 </ul>
-            </form>
+                <div id="errTip" class="color-red text-center m-t-sm"></div>
+            </div>
 
-            <p><a id="pwd-btn" href="#" class="button button-fill">确定</a></p>
+            <p><a id="pwdBtn" href="#" class="button button-fill">确定</a></p>
         </div>
 
         

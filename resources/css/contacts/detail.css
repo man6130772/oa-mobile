@@ -1,0 +1,43 @@
+#contactsDetail .content {
+    padding: 1.2rem 0 0.5rem;
+}
+
+#contactsDetail img.user-header {
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: 0 auto;
+}
+
+#contactsDetail .user-position {
+    color: #888;
+}
+
+#contactsDetail .contacts-Info {
+    padding: 0 3rem;
+}
+
+#contactsDetail a.contact-Info {
+    width: 2.5rem;
+    margin: 0.5rem 0 0.65rem;
+}
+
+#contactsDetail a.contact-Info span.iconfont {
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #DFDFDF;
+}
+
+#contactsDetail .m-t-md {
+    margin-top: 0.85rem !important;
+}
+
+
+
+
+
+
+
+

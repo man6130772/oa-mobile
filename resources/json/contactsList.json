@@ -1,18 +1,21 @@
 {
     "CYLXR": [
         {
+            "id": "666",
             "name": "张三",
             "department": "实施组",
             "section": "信息集团中心",
             "jobPosition": "实施工程师"
         }, 
         {
+            "id": "66111",
             "name": "李四",
             "department": "研发部",
             "section": "信息集团中心",
             "jobPosition": "前端工程师"
         }, 
         {
+            "id": "611666",
             "name": "王五",
             "department": "研发部",
             "section": "集团中心",
@@ -21,18 +24,21 @@
     ],
     "A": [
         {
+            "id": "6661166",
             "name": "张三",
             "department": "实施组",
             "section": "信息集团中心",
             "jobPosition": "实施工程师"
         }, 
         {
+            "id": "6111111166",
             "name": "李四",
             "department": "研发部",
             "section": "信息集团中心",
             "jobPosition": "前端工程师"
         }, 
         {
+            "id": "6616",
             "name": "王五",
             "department": "研发部",
             "section": "集团中心",
@@ -41,12 +47,14 @@
     ],
     "B": [
         {
+            "id": "61",
             "name": "张三",
             "department": "实施组",
             "section": "信息集团中心",
             "jobPosition": "实施工程师"
         }, 
         {
+            "id": "6616",
             "name": "李四",
             "department": "研发部",
             "section": "信息集团中心",
@@ -55,12 +63,14 @@
     ],
     "F": [
         {
+            "id": "166",
             "name": "张三",
             "department": "实施组",
             "section": "信息集团中心",
             "jobPosition": "实施工程师"
         }, 
         {
+            "id": "666666",
             "name": "李四",
             "department": "研发部",
             "section": "信息集团中心",
@@ -69,12 +79,46 @@
     ],
     "L": [
         {
+            "id": "666666",
             "name": "张三",
             "department": "实施组",
             "section": "信息集团中心",
             "jobPosition": "实施工程师"
         }, 
         {
+            "id": "666666",
+            "name": "李四",
+            "department": "研发部",
+            "section": "信息集团中心",
+            "jobPosition": "前端工程师"
+        }
+    ],
+    "N": [
+        {
+            "id": "666666",
+            "name": "张三",
+            "department": "实施组",
+            "section": "信息集团中心",
+            "jobPosition": "实施工程师"
+        }, 
+        {
+            "id": "666666",
+            "name": "李四",
+            "department": "研发部",
+            "section": "信息集团中心",
+            "jobPosition": "前端工程师"
+        }
+    ],
+    "O": [
+        {
+            "id": "666666",
+            "name": "张三",
+            "department": "实施组",
+            "section": "信息集团中心",
+            "jobPosition": "实施工程师"
+        }, 
+        {
+            "id": "666666",
             "name": "李四",
             "department": "研发部",
             "section": "信息集团中心",
@@ -83,18 +127,21 @@
     ],
     "V": [
         {
+            "id": "666666",
             "name": "张三",
             "department": "实施组",
             "section": "信息集团中心",
             "jobPosition": "实施工程师"
         }, 
         {
+            "id": "666666",
             "name": "李四",
             "department": "研发部",
             "section": "信息集团中心",
             "jobPosition": "前端工程师"
         }, 
         {
+            "id": "666666",
             "name": "王五",
             "department": "研发部",
             "section": "集团中心",

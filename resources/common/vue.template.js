@@ -368,12 +368,12 @@ define(['vue'], function(Vue) {
 
     // 设置 - 个人主页 - 用户信息区域
     Vue.component('person-info', {
-        props: ['tableSource'],
+        props: ['userData'],
         template: '\
-            <div id="user-area">\
-                <img class="user-header" :src="tableSource.headerImg"></img>\
-                <div class="user-name text-white text-center text-xxl m-t-xs">{{tableSource.name}}</div>\
-                <div class="user-position text-white text-center">{{tableSource.section}} {{tableSource.jobPosition}}</div>\
+            <div>\
+                <img class="user-header" :src="userData.headerImg"></img>\
+                <div class="user-name text-white text-center text-xxl m-t-xs">{{userData.name}}</div>\
+                <div class="user-position text-white text-center">{{userData.section}} {{userData.jobPosition}}</div>\
             </div>\
         '
     });
@@ -575,9 +575,9 @@ define(['vue'], function(Vue) {
         template: '\
             <div class="list-group">\
                 <ul class="no-border">\
-                    <li class="color-default" :class="{\'common-list-group-title\': isCommon, \'list-group-title\': !isCommon}">{{ keyData }}</li>\
+                    <li class="color-default" :class="{\'common-list-group-title\': titleData.isCommon, \'list-group-title\': !titleData.isCommon}">{{ titleData.title }}</li>\
                     <li class="contact-list" v-for="item in list">\
-                        <a href="#">\
+                        <a :href="\'./detail.html?id=\' + item.id">\
                             <div class="list-name text-black">{{item.name}}</div>\
                             <div class="list-info">集团信息中心.CEO</div>\
                         </a>\
@@ -586,13 +586,19 @@ define(['vue'], function(Vue) {
             </div>\
         ',
         computed: {
-            isCommon: function() {
+            titleData: function() {
                 var key = this.keyData;
                 var list = this.list;
                 if (key === 'CYLXR') {
-                    return 1;
+                    return {
+                        isCommon: 1,
+                        title: "常用联系人"
+                    };
                 } else {
-                    return 0;
+                    return {
+                        isCommon: 0,
+                        title: key
+                    };
                 }
             }
         }

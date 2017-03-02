@@ -24,7 +24,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!contactsIndexCSS', 'common'
                 
                 vm.$nextTick(function(){   //for渲染完成的回调
                     $(".contacts-block").indexList();
-                })
+                });
             });
         };
     }

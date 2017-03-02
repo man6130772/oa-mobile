@@ -6,6 +6,7 @@ var ajaxUrl = {
     portal: ['../../resources/json/logined.json', 'http://172.17.194.42:8088/zwBelleOA_Moblie_0.1/First.do'][DEBUG],
     personInfo: ['../../resources/json/personInfo.json', 'http://172.17.194.42:8088/zwBelleOA_Moblie_0.1/Persondata.do'][DEBUG],
     userChange: ['../../resources/json/userChange.json', 'http://172.17.194.42:8088/zwBelleOA_Moblie_0.1/Changeuser.do'][DEBUG],
+    pwdChange: ['../../resources/json/pwdChange.json', 'http://172.17.194.42:8088/zwBelleOA_Moblie_0.1/Updatepwd.do'][DEBUG],
 }
 
 function checkLogined() {
@@ -42,3 +43,12 @@ function ajaxData(type, url, callback, params) {
         success: callback
     });
 }
+
+function getQueryString(name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(r[2]);
+    }
+    return null;
+};
