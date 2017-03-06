@@ -1,4 +1,4 @@
-define(['vue', 'webuploader', 'css!webuploadercss', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS', 'css!applyvacationCSS', 'vue.template'], function(Vue, WebUploader) {
+define(['vue', 'webuploader', 'swipeout', 'css!webuploadercss', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS', 'css!applyvacationCSS', 'vue.template'], function(Vue, WebUploader) {
     function page() {
         var that = this,
             eventType,
@@ -12,7 +12,7 @@ define(['vue', 'webuploader', 'css!webuploadercss', 'css!iconfont', 'css!commonc
             // 绑定header的回退事件
             that.handleBackClick();
 
-            flowForm = eventType === 'pageReinit' ? flowForm : that.render('flowForm');
+            flowForm = eventType === 'pageReinit' ? flowForm : that.renderForm('flowForm');
             that.ajaxData('../../resources/json/applyvacation.json', flowForm, that.handleImgUpload);
 
             that.handleSubmit(pageId);
@@ -27,6 +27,36 @@ define(['vue', 'webuploader', 'css!webuploadercss', 'css!iconfont', 'css!commonc
                 data: {
                     data: data || {}
                 }
+            });
+        };
+
+        this.renderForm = function(id, data) {
+            return new Vue({
+                el: '#' + id,
+                data: {
+                    data: data || {}
+                },
+                updated: function() {
+                    $(document).off($.touchEvents.start, '.list-block li.swipeout');
+                    $(document).off($.touchEvents.move, '.list-block li.swipeout');
+                    $(document).off($.touchEvents.end, '.list-block li.swipeout');
+                    $.initSwipeout();
+                    var vm = this;
+                    $(document).off('deleted', '.list-block li.swipeout').on('deleted', '.list-block li.swipeout', function(e) {
+                        // 关键：先清空数组，再接收返回的新数据，重置明细的number
+                        vm.data.leftDetails = [];
+                        $.ajax({
+                            url: '../../resources/json/applyvacation.json',
+                            type: 'POST',
+                            data: {
+                                delete: $(this).find('.item-title').text()
+                            },
+                            success: function(data) {
+                                vm.data = data;
+                            }
+                        });
+                    });
+                },
             });
         };
 
@@ -48,6 +78,22 @@ define(['vue', 'webuploader', 'css!webuploadercss', 'css!iconfont', 'css!commonc
                 var uploader = $('#' + pageId + ' .imguploader').data('uploader');
                 if (uploader) uploader.upload();
             });
+        };
+
+        this.handleTimerBack = function() {
+            $.modal({
+                text: '<span class="iconfont icon-dui color-limegreen icon-big p-r-sm"></span>提交成功！',
+                afterText: '<p class="app-modal-remarks"><span id="backCount" class="color-red">2</span> 秒后跳转【创建流程】</p>'
+            });
+            var timer = setInterval(function() {
+                var count = $('#backCount').text();
+                if (count > 0) $('#backCount').text(--count);
+                if (count === 0) {
+                    clearInterval(timer);
+                    $.closeModal();
+                    history.back();
+                }
+            }, 1000);
         };
 
         this.handleImgUpload = function(vm) {
@@ -137,12 +183,17 @@ define(['vue', 'webuploader', 'css!webuploadercss', 'css!iconfont', 'css!commonc
             });
 
             // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-            uploader.on('uploadSuccess', function(file) {
+            uploader.on('uploadSuccess', function(file, res) {
                 $('#' + file.id).parent('.imgitem').removeClass('upload-fail').addClass('upload-success');
+                var stats = uploader.getStats(),
+                    imgNum = imguploader.find('.imgitem').length;
+                if (stats.progressNum === 0 && stats.queueNum === 0 && stats.successNum === imgNum) {
+                    that.handleTimerBack();
+                }
             });
 
             // 文件上传失败，显示上传出错。
-            uploader.on('uploadError', function(file) {
+            uploader.on('uploadError', function(file, res) {
                 $('#' + file.id).parent('.imgitem').removeClass('upload-success').addClass('upload-fail');
             });
         }

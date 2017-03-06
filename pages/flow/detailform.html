@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>明细</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="../../resources/boot.js"></script>
+</head>
+
+<body style="display: none;">
+    <div class="page" id="detailform">
+        <header class="bar bar-nav bg-blue b-b-none">
+            <button class="app-btn-back button button-link button-nav pull-left color-white">
+                <span class="icon icon-left"></span>
+            </button>
+            <h1 class="title text-white"></h1>
+        </header>
+        <div class="content">
+            <div class="list-block m-t-none m-b-none">
+                <ul class="b-t-none b-b-none">
+                    <li>
+                        <a class="item-content app-leave-type item-link p-l-xxs" href="javascript:;">
+                            <div class="item-inner">
+                                <div class="item-title color-default">假期类型：</div>
+                                <div class="item-after">调休</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="item-content app-leave-valid-date p-l-xxs" style="display: none;">
+                        <div class="item-inner">
+                            <div class="item-title color-default">有效假期：</div>
+                            <div class="item-after color-red"></div>
+                        </div>
+                    </li>
+                    <li class="item-content item-link app-leave-start-time p-l-xxs">
+                        <div class="item-inner">
+                            <div class="item-title color-default">开始时间：</div>
+                            <div class="item-after"><input type="text" /></div>
+                        </div>
+                    </li>
+                    <li class="item-content item-link app-leave-end-time p-l-xxs">
+                        <div class="item-inner">
+                            <div class="item-title color-default">结束时间：</div>
+                            <div class="item-after"><input type="text" /></div>
+                        </div>
+                    </li>
+                    <li class="item-content app-leave-length p-l-xxs">
+                        <div class="item-inner">
+                            <div class="item-title color-default">请假时长：</div>
+                            <div class="item-after color-red"></div>
+                        </div>
+                    </li>
+                    <li class="item-content app-leave-remain p-l-xxs">
+                        <div class="item-inner">
+                            <div class="item-title color-default">剩余假期：</div>
+                            <div class="item-after"></div>
+                        </div>
+                    </li>
+                    <li class="item-content app-leave-reason p-l-xxs">
+                        <div class="item-inner">
+                            <div class="item-title color-default">申请原因：</div>
+                            <div class="item-input">
+                                <input type="text" placeholder="请填写申请理由">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="app-submit m-t-lg m-b-md">
+                <a class="button no-border bg-blue" href="javascript:;">提交</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

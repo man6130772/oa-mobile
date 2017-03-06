@@ -244,6 +244,26 @@ define(['vue'], function(Vue) {
         }
     });
 
+    // 创建流程 - 假期申请 - 明细
+    Vue.component('flowform-vacation-detail-item', {
+        props: ['item', 'index'],
+        template: '\
+            <li class="swipeout" :index="[index]">\
+                <div class="swipeout-content">\
+                    <a class="item-content item-link p-l-xxs" :href="[item.url]">\
+                        <div class="item-inner">\
+                            <div class="item-title">{{item.title}}</div>\
+                            <div class="item-subtitle color-lightgray">{{item.text}}</div>\
+                        </div>\
+                    </a>\
+                </div>\
+                <div class="swipeout-actions-right">\
+                    <a class="bg-danger swipeout-delete" href="javascript:;">删除</a>\
+                </div>\
+            </li>\
+        '
+    });
+
     // 创建流程 - 假期申请 - 流程表单 + 明细
     Vue.component('flowform-vacation-detail', {
         props: ['dataSource'],
@@ -252,14 +272,7 @@ define(['vue'], function(Vue) {
                 <flowform-vacation :table-source="dataSource"></flowform-vacation>\
                 <div class="list-block media-list m-t-sm m-b-none">\
                     <ul class="b-t-none b-b-none">\
-                        <li v-for="item in detailList">\
-                            <a class="item-content item-link p-l-xxs" :href="[item.url]">\
-                                <div class="item-inner">\
-                                    <div class="item-title">{{item.title}}</div>\
-                                    <div class="item-subtitle color-lightgray">{{item.text}}</div>\
-                                </div>\
-                            </a>\
-                        </li>\
+                        <flowform-vacation-detail-item v-for="(item, index) in detailList" :item="item" :index="index"></flowform-vacation-detail-item>\
                         <li>\
                             <a @click="handleIncrease" class="item-content app-create-detail item-link p-l-xxs" href="javascript:;">\
                                 <div class="item-inner">\
@@ -278,10 +291,10 @@ define(['vue'], function(Vue) {
         },
         methods: {
             handleIncrease: function(e) {
-                var num = this.detailList.length + 1;
-                this.detailList.push({
+                var num = this.dataSource.leftDetails.length + 1;
+                this.dataSource.leftDetails.push({
                     title: '明细' + num,
-                    url: 'applydetail.html?detail=' + num
+                    url: 'detailform.html?detail=' + num
                 });
             }
         }

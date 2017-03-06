@@ -153,6 +153,16 @@ table td:first-child {
     padding: 0 .25rem;
 }
 
+.app-submit {
+    padding: 0 .25rem;
+}
+
+.app-submit .button {
+    height: 2rem;
+    color: #fff;
+    line-height: 2rem;
+}
+
 img.user-header {
     border-radius: 50%;
     border: 2px solid #fff;

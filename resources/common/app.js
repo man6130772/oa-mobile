@@ -12,6 +12,7 @@ require.config({
         'ui': staticUrl + lg7Version + 'js/ui' + min,
         'uicss': staticUrl + lg7Version + 'css/ui' + min,
         'swiper': staticUrl + lg7Version + 'js/ui.swiper' + min,
+        'swipeout': staticUrl + lg7Version + 'js/ui.swipeout' + min,
         'iconfont': './fonts/iconfont' + min,
         'router': './common/router' + min,
         'vue': './common/vue' + min,
@@ -36,6 +37,7 @@ require.config({
         'archived': './js/flow/archived' + min,
         'createflow': './js/flow/createflow' + min,
         'applyvacation': './js/flow/applyvacation' + min,
+        'detailform': './js/flow/detailform' + min,
 
         // 考勤s
         'checkingIndex': './js/checking/index' + min,
@@ -65,6 +67,7 @@ require.config({
         'inprogressCSS': './css/flow/inprogress' + min,
         'createflowCSS': './css/flow/createflow' + min,
         'applyvacationCSS': './css/flow/applyvacation' + min,
+        'detailformCSS': './css/flow/detailform' + min,
 
         // 考勤s
         'checkingIndexCSS': './css/checking/index' + min,

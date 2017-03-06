@@ -14,6 +14,7 @@ define(function() {
         archived: ['pageInit'],
         createflow: ['pageInit'],
         applyvacation: ['pageInit', 'pageReinit'],
+        detailform: ['pageInit'],
         // 考勤s
         checkingIndex: ['pageInit'],
         checkingDetail: ['pageInit'],

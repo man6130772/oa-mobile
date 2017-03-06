@@ -7,11 +7,15 @@
     "leftSummary": "调休1天，年假1天",
     "leftDetails": [{
         "title": "请假明细 1",
-        "url": "applydetail.html?detail=1",
+        "url": "detailform.html?detail=1",
         "text": "请假4小时"
     }, {
         "title": "请假明细 2",
-        "url": "applydetail.html?detail=2",
+        "url": "detailform.html?detail=2",
         "text": "调休5小时"
+    }, {
+        "title": "请假明细 3",
+        "url": "detailform.html?detail=3",
+        "text": "请假5小时"
     }]
 }

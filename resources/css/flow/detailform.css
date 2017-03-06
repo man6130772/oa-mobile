@@ -1,0 +1,9 @@
+.list-block .app-leave-start-time input,
+.list-block .app-leave-end-time input {
+    width: 7rem;
+    height: auto;
+}
+
+.list-block .app-leave-reason .item-input {
+    width: 7rem;
+}
