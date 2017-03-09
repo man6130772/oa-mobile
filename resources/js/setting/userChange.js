@@ -34,7 +34,7 @@ define(['vue', 'css!commoncss', 'css!iconfont', 'css!userChangeCSS', 'common', '
 
         that.listChangeClick = function() {
             $('#userChangeList').on('click', 'li:not(".login-active")', function() {
-                event.preventDefault();   //阻止点击选中
+                // event.preventDefault();   //阻止点击选中
                 that.changeUser(1);
             })
         }

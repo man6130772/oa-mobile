@@ -3,9 +3,9 @@ define(function() {
     var config = {
         // 登陆
         login: ['pageInit'],
-        logined: ['pageInit'],
+        index: ['pageInit'],
         // 流程
-        flowIndex: ['pageInit'],
+        flowIndex: ['pageInit', 'pageReinit'],
         mystandby: ['pageInit'],
         leftdetails: ['pageInit'],
         detailitem: ['pageInit'],
@@ -28,9 +28,16 @@ define(function() {
         userChange: ['pageInit'],
         // 设置e
         // 通讯录s
-        contactsIndex: ['pageInit'],
-        contactsDetail: ['pageInit'],
+        contactsIndex: ['pageInit', 'pageReinit'],
+        contactsDetail: ['pageInit', 'pageReinit'],
         // 通讯录e
+        // 资讯s
+        infoIndex: ['pageInit', 'pageReinit'],
+        infoPublish: ['pageInit'],
+        news: ['pageInit'],
+        noticePublish: ['pageInit'],
+        infoDetail: ['pageInit'],
+        // 资讯e
     };
 
     return config;

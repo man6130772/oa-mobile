@@ -1,0 +1,18 @@
+{
+    "mystandby": {
+        "state": "0",
+        "number": "5"
+    },
+    "inprogress": {
+        "state": "1",
+        "number": "3"
+    },
+    "myapplication": {
+        "state": "0",
+        "number": "16"
+    },
+    "archived": {
+        "state": "0",
+        "number": "16"
+    }
+}

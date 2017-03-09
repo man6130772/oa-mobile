@@ -1,9 +1,9 @@
-define(['vue', 'css!iconfont', 'css!commoncss', 'css!loginedCSS', 'common', 'swiper', 'vue.template'], function(Vue) {
+define(['vue', 'css!iconfont', 'css!commoncss', 'css!indexCSS', 'common', 'swiper', 'vue.template'], function(Vue) {
     function page() {
         var that = this;
         this.init = function() {
-            checkLogined();
-
+            // eruda.init();
+            $.showIndicator();
             var portalShow = that.render('portalShow');
             that.ajaxData(ajaxUrl.portal, portalShow);
         };
@@ -20,7 +20,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!loginedCSS', 'common', 'swi
         this.ajaxData = function(url, vm) {
             ajaxData('GET', url, function(data) {
                 vm.data = data;
-
+                $.hideIndicator();
                 vm.$nextTick(function(){   //for渲染完成的回调
                     that.initSwiper();
                 })

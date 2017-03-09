@@ -1,13 +1,17 @@
 define(['vue', 'css!iconfont', 'css!commoncss', 'css!contactsDetailCSS', 'common', 'vue.template'], function(Vue) {
     function page() {
-        var that = this;
-        var id = getQueryString('id');
+        var that = this,
+            id = getQueryString('id'),
+            contactDetail,
+            eventType;
 
-        this.init = function() {
+        this.init = function(e) {
             this.handleBackClick();
-
-            // var contactsDetail = that.render('contactsDetail');
-            // that.ajaxData('../../resources/json/contactsDetail.json', contactsDetail);
+            id = getQueryString('id')
+            // 判断初始化事件type
+            eventType = e.type;
+            contactDetail = (eventType == 'pageReinit' ? contactDetail : that.render('contactDetail'));
+            that.ajaxData(ajaxUrl.personInfo, contactDetail, { id: id });
         };
 
         this.render = function(id, data) {
@@ -19,10 +23,11 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!contactsDetailCSS', 'common
             });
         };
 
-        this.ajaxData = function(url, vm) {
+        this.ajaxData = function(url, vm, params) {
             ajaxData('GET', url, function(data) {
                 vm.data = data;
-            });
+                // console.log(data)
+            }, params);
         };
 
         this.handleBackClick = function() {

@@ -20,11 +20,11 @@
             <h1 class="title text-white">我的待办</h1>
         </header>
         <div class="buttons-tab bar-header-secondary">
-            <a href="#all" class="tab-link active button">全部</a>
-            <a href="#nosee" class="tab-link button">未看</a>
-            <a href="#saw" class="tab-link button">已看</a>
-            <a href="#star" class="tab-link button">标星</a>
-            <a href="#invert" class="tab-link button">倒序</a>
+            <a href="#" class="tab-link active button">全部</a>
+            <a href="#" class="tab-link button">未看</a>
+            <a href="#" class="tab-link button">已看</a>
+            <a href="#" class="tab-link button">标星</a>
+            <a href="#" class="tab-link button">倒序</a>
         </div>
         <div class="bar bar-header-third b-b-none">
             <div class="searchbar p-l-xxs p-r-xxs">
@@ -38,27 +38,7 @@
         <div class="content">
             <div class="content-block m-t-none m-b-none p-l-none p-r-none">
                 <div class="tabs">
-                    <div id="all" class="tab active">
-                        <div class="app-list-panel">
-                            <mystandbymessage v-for="item in msgList" :details="item"></mystandbymessage>
-                        </div>
-                    </div>
-                    <div id="nosee" class="tab">
-                        <div class="app-list-panel">
-                            <mystandbymessage v-for="item in msgList" :details="item"></mystandbymessage>
-                        </div>
-                    </div>
-                    <div id="saw" class="tab">
-                        <div class="app-list-panel">
-                            <mystandbymessage v-for="item in msgList" :details="item"></mystandbymessage>
-                        </div>
-                    </div>
-                    <div id="star" class="tab">
-                        <div class="app-list-panel">
-                            <mystandbymessage v-for="item in msgList" :details="item"></mystandbymessage>
-                        </div>
-                    </div>
-                    <div id="invert" class="tab">
+                    <div id="list" class="tab active">
                         <div class="app-list-panel">
                             <mystandbymessage v-for="item in msgList" :details="item"></mystandbymessage>
                         </div>

@@ -26,7 +26,7 @@ require.config({
         /**** 注册js ****/
         // 登陆
         'login': './js/login/login' + min,
-        'logined': './js/login/logined' + min,
+        'index': './js/login/index' + min,
         // 流程
         'flowIndex': './js/flow/index' + min,
         'mystandby': './js/flow/mystandby' + min,
@@ -54,12 +54,20 @@ require.config({
         // 通讯录s
         'contactsIndex': './js/contacts/index' + min,
         'contactsDetail': './js/contacts/detail' + min,
+        'pinyin': './js/contacts/pinyin-first' + min,
         // 通讯录e
+        // 资讯s
+        'infoIndex': './js/info/index' + min,
+        'infoPublish': './js/info/infoPublish' + min,
+        'news': './js/info/news' + min,
+        'noticePublish': './js/info/noticePublish' + min,
+        'infoDetail': './js/info/detail' + min,
+        // 资讯e
 
         /**** 注册css ****/
         // 登陆
         'loginCSS': './css/login/login' + min,
-        'loginedCSS': './css/login/logined' + min,
+        'indexCSS': './css/login/index' + min,
         // 流程
         'flowIndexCSS': './css/flow/index' + min,
         'mystandbyCSS': './css/flow/mystandby' + min,
@@ -85,6 +93,11 @@ require.config({
         'contactsIndexCSS': './css/contacts/index' + min,
         'contactsDetailCSS': './css/contacts/detail' + min,
         // 通讯录e
+        // 资讯s
+        // 'infoIndexCSS': './cssinfo/index' + min,
+        'infoCommonListCSS': './css/info/infoCommonList' + min,
+        'infoDetailCSS': './css/info/detail' + min,
+        // 资讯e
     },
     shim: {
         'ui': {
@@ -108,6 +121,8 @@ require([
     require(['ui'], function() {
         $(document).off('pageInit').on('pageInit', function(e, pageId, $page) {
             $(document.body).show();
+            checkLogined();
+            // setHeaderHeight();
         });
         require(['router'], function(config) {
             /* 默认绑定 */

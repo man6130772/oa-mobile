@@ -1,16 +1,16 @@
 [{
-    "favor": true,
+    "id": "12555",
+    "favor": 1,
     "time": "2016-12-17 00:00",
-    "url": "leftdetails.html",
     "content": "测试人员吴冬冬-2016-12-17 （流程名称：8888888.流动资产入库流程，当前版本号：V1111111）"
 }, {
-    "favor": false,
+    "id": "1254155",
+    "favor": 0,
     "time": "2016-8-9 12:12",
-    "url": "leftdetails.html",
     "content": "调研项目流程管理，顺序管理"
 }, {
-    "favor": true,
+    "id": "124155",
+    "favor": 1,
     "time": "2016-6-3 4:22",
-    "url": "leftdetails.html",
     "content": "测试人员吴冬冬-2016-12-17 （流程名称：8888888.流动资产入库流程，当前版本号：V1111111）"
 }]

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>资讯</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="../../resources/boot.js"></script>
+</head>
+
+<body style="display: none;">
+    <div class="page" id="infoPublish">
+        <header class="bar bar-nav bg-blue b-b-none">
+            <button class="app-btn-back button button-link button-nav pull-left color-white">
+                <span class="icon icon-left"></span>
+            </button>
+            <h1 class="title text-white">OA信息</h1>
+        </header>
+        <div class="buttons-tab bar-header-secondary">
+            <a href="#unread" class="tab-link active button">未读</a>
+            <a href="#read" class="tab-link button">已读</a>
+        </div>
+        <div class="content">
+            <div class="content-block m-b-none p-l-none p-r-none">
+                <div class="tabs">
+                    <div id="unread" class="tab active">
+                        <div class="app-list-panel">
+                            <info-common-list  v-for="item in data" :item="item"></info-common-list>
+                        </div>
+                    </div>
+                    <div id="read" class="tab">
+                        <div class="app-list-panel">
+                            <info-common-list  v-for="item in data" :item="item"></info-common-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

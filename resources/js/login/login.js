@@ -17,12 +17,19 @@ define(['css!loginCSS', 'css!iconfont', 'common', 'vue'], function() {
                         var logined = +data.logined;
                         if(logined === 0) {
                             localStorage.setItem('loginState', 1);
-                            // localStorage.setItem('username', username);
-                            // localStorage.setItem('id', data.id);
-                            // localStorage.setItem('subId', data.subId);
-                            location.href = './logined.html';
+
+                            //safari设置不了cookie，做特殊处理，跳转到后台页面去设置cookie
+                            // var explorer = navigator.userAgent;
+                            // if(explorer.indexOf("Safari") >= 0){
+                            //     var indexUrl = '//' + location.hostname + '/pages/login/index.html';
+                            //     console.log('#?uername=' + username + '&password=' + password + '&url=' + indexUrl);
+                            //     location.href = '#?uername=' + username + '&password=' + password + '&url=' + indexUrl;
+                            //     return;
+                            // }
+
+                            location.href = './index.html';
                         }else {
-                            $('#errTip').html(data.msg)
+                            $('#errTip').html(data.msg);
                         }
                         
                     }, {

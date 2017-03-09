@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>通讯录</title>
+    <title>资讯</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -12,15 +12,15 @@
 </head>
 
 <body style="display: none;">
-    <div class="page" id="contactsDetail">
+    <div class="page bg-white" id="infoDetail">
         <header class="bar bar-nav bg-blue b-b-none">
             <button class="app-btn-back button button-link button-nav pull-left color-white">
                 <span class="icon icon-left"></span>
             </button>
-            <h1 class="title text-white">详情</h1>
+            <h1 class="title text-white">资讯</h1>
         </header>
-        <div class="content" id="contactDetail">
-            <contact-detail :user-data="data"></contact-detail>
+        <div class="content p-sm" id="infoDetailCon">
+            <info-detail :data-source="data"></info-detail>
         </div>
     </div>
 </body>

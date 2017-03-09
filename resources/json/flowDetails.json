@@ -1,0 +1,41 @@
+{
+    "flowForm": {
+        "title": "ZGA0101假期申请流程-黄英-2016-10-18",
+        "formId": "ZG01012016100107",
+        "applicationTime": "2016-10-18",
+        "applicant": "黄英 UX设计师",
+        "totalLeft": "2天",
+        "leftSummary": "调休1天，年假1天",
+        "leftType": [{
+            "type": "调休",
+            "url": "detailitem.html",
+            "startTime": "2016-10-05 09:00",
+            "endTime": "2016-10-05 18:00",
+            "timeLength": "8小时",
+            "reason": "回家"
+        }, {
+            "type": "年假",
+            "url": "detailitem.html",
+            "startTime": "2016-10-06 09:00",
+            "endTime": "2016-10-06 18:00",
+            "timeLength": "8小时",
+            "reason": "回家"
+        }]
+    },
+    "flowImg": "../../resources/images/flow-picture.png",
+    "flowState": [
+        {
+            "time": "2016-09-10 10:00",
+            "title": "申请人发起申请",
+            "text": "实施组.王红燕：“请领导审批！”"
+        }, {
+            "time": "2016-09-10 10:00",
+            "title": "小组负责人审批",
+            "text": "实施组.朱雅倩：同意"
+        }, {
+            "time": "2016-09-10 10:00",
+            "title": "分管领导审批",
+            "text": "实施组.TONY：已经看"
+        }
+    ],
+}

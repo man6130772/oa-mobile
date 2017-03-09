@@ -4,23 +4,18 @@ define(['vue'], function(Vue) {
     Vue.component('mystandbymessage', {
         props: ['details'],
         template: '\
-            <a class="card-link" :href="details.url">\
+            <a class="card-link" :href="\'leftdetails.html?id=\' + details.id">\
                 <div class="card no-margin no-radius no-shadow">\
                     <div class="card-header">\
                         <span>{{details.time}}</span>\
-                        <span @click.stop.prevent="handleFavor" :class="[details.favor ? \'icon-xingxingshixin color-gold\' : \'icon-xingxingkongxin\']" class="iconfont p-l-xxs p-r-xxs"></span>\
+                        <span :data-id="details.id" :class="[details.favor ? \'icon-xingxingshixin color-gold\' : \'icon-xingxingkongxin\']" class="iconfont p-l-xxs p-r-xxs"></span>\
                     </div>\
                     <div class="card-content">\
                         <div class="card-content-inner">{{details.content}}</div>\
                     </div>\
                 </div>\
             </a>\
-        ',
-        methods: {
-            handleFavor: function(event) {
-                if (this.details) this.details.favor = !this.details.favor;
-            }
-        }
+        '
     });
 
     // 审批中、我的申请 - 消息列表
@@ -385,8 +380,8 @@ define(['vue'], function(Vue) {
         template: '\
             <div>\
                 <img class="user-header" :src="userData.headerImg"></img>\
-                <div class="user-name text-white text-center text-xxl m-t-xs">{{userData.name}}</div>\
-                <div class="user-position text-white text-center">{{userData.section}} {{userData.jobPosition}}</div>\
+                <div class="user-name text-center text-xxl m-t-xs">{{userData.name}}</div>\
+                <div class="user-position text-center">{{userData.section}} {{userData.jobPosition}}</div>\
             </div>\
         '
     });
@@ -499,7 +494,7 @@ define(['vue'], function(Vue) {
         props: ['dataSource'],
         template: '\
             <div>\
-                <div class="app-list-panel m-t-sm">\
+                <div class="app-list-panel m-t-sm" :class="{hidden: !dataLen.imgShowLen}">\
                     <div class="app-subtitle list-block m-t-none m-b-none">\
                         <ul class="b-t-none b-b-none">\
                             <li class="item-content p-l-xxs no-border">\
@@ -521,7 +516,7 @@ define(['vue'], function(Vue) {
                         </div>\
                     </div>\
                 </div>\
-                <div class="app-list-panel m-t-sm">\
+                <div class="app-list-panel m-t-sm" :class="{hidden: !dataLen.standbyLen}">\
                     <div class="app-subtitle list-block m-t-none m-b-none">\
                         <ul class="b-t-none b-b-none">\
                             <li class="item-content item-link p-l-xxs">\
@@ -544,7 +539,7 @@ define(['vue'], function(Vue) {
                         </ul>\
                     </div>\
                 </div>\
-                <div class="app-list-panel m-t-sm">\
+                <div class="app-list-panel m-t-sm" :class="{hidden: !dataLen.noticeLen}">\
                     <div class="app-subtitle list-block m-t-none m-b-none">\
                         <ul class="b-t-none b-b-none">\
                             <li class="item-content item-link p-l-xxs">\
@@ -569,17 +564,45 @@ define(['vue'], function(Vue) {
                     </div>\
                 </div>\
             </div>\
-        '
+        ',
+        computed: {
+            dataLen: function() {
+                var data = this.dataSource;
+                return {
+                    imgShowLen: data.imgShow ? data.imgShow.length : 0,
+                    standbyLen: data.standby ? data.standby.length : 0,
+                    noticeLen: data.notice ? data.notice.length : 0
+                };
+            }
+        }
     });
 
     // 通讯录 - 列表页 - 整页
     Vue.component('contacts-list', {
         props: ['dataSource'],
         template: '\
-            <div class="list-block contacts-block no-margin">\
+            <div v-if="dataFlag" class="list-block contacts-block no-margin">\
                 <contact-list v-for="(list, key) in dataSource" :list="list" :key-data="key"></contact-list>\
             </div>\
-        '
+            <div v-else class="list-block contacts-block no-margin">\
+                <div class="list-group">\
+                    <ul class="no-border">\
+                        <li class="contact-list" v-for="item in dataSource">\
+                            <a :href="\'./detail.html?id=\' + item.id">\
+                                <div class="list-name text-black">{{item.name}}</div>\
+                                <div class="list-info">{{item.section}} {{item.department}} {{item.jobPosition}}</div>\
+                            </a>\
+                        </li>\
+                    </ul>\
+                </div>\
+            </div>\
+        ',
+        computed: {
+            dataFlag: function() {
+                var data = this.dataSource;
+                return (data instanceof Array) ? 0 : 1;
+            }
+        }
     });
 
     // 通讯录 - 列表页 - 列表块
@@ -588,11 +611,11 @@ define(['vue'], function(Vue) {
         template: '\
             <div class="list-group">\
                 <ul class="no-border">\
-                    <li class="color-default" :class="{\'common-list-group-title\': titleData.isCommon, \'list-group-title\': !titleData.isCommon}">{{ titleData.title }}</li>\
+                    <li v-if="list.length > 0" class="color-default" :class="{\'common-list-group-title\': titleData.isCommon, \'list-group-title\': !titleData.isCommon}">{{ titleData.title }}</li>\
                     <li class="contact-list" v-for="item in list">\
                         <a :href="\'./detail.html?id=\' + item.id">\
                             <div class="list-name text-black">{{item.name}}</div>\
-                            <div class="list-info">集团信息中心.CEO</div>\
+                            <div class="list-info">{{item.section}} {{item.department}} {{item.jobPosition}}</div>\
                         </a>\
                     </li>\
                 </ul>\
@@ -612,8 +635,145 @@ define(['vue'], function(Vue) {
                         isCommon: 0,
                         title: key
                     };
+                }    
+            }
+        }
+    });
+
+    // 通讯录 - 详情页 - 整页
+    Vue.component('contact-detail', {
+        props: ['userData'],
+        template: '\
+            <div>\
+                <person-info :user-data="userData"></person-info>\
+                <div class="contacts-Info flex-box flex-justify-space">\
+                    <a :href="\'tel:\' + phone.mobile" class="contact-Info block external">\
+                       <span class="iconfont icon-dianhua block full-width text-center"></span>\
+                       <div class="full-width text-center">电话</div>\
+                    </a>\
+                    <a :href="\'sms:\' + phone.mobile" class="contact-Info block external">\
+                       <span class="iconfont icon-duanxin block full-width text-center"></span>\
+                       <div class="full-width text-center">短信</div>\
+                    </a>\
+                    <a :href="\'tel:\' + phone.telephone" class="contact-Info block external">\
+                       <span class="iconfont icon-dianhua1 block full-width text-center"></span>\
+                       <div class="full-width text-center">座机</div>\
+                    </a>\
+                    <a :href="\'mailto:\' + userData.email" class="contact-Info block external">\
+                       <span class="iconfont icon-youjian block full-width text-center"></span>\
+                       <div class="full-width text-center">邮件</div>\
+                    </a>\
+                </div>\
+                <div class="list-block no-margin m-t-sm">\
+                    <ul>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h flex-justify-start p-l-lg">\
+                                <div class="item-title">岗位：</div>\
+                                <div class="item-after p-l-sm">{{userData.jobPosition}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h flex-justify-start p-l-lg"">\
+                                <div class="item-title">分部：</div>\
+                                <div class="item-after p-l-sm">{{userData.section}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h flex-justify-start p-l-lg"">\
+                                <div class="item-title">部门：</div>\
+                                <div class="item-after p-l-sm">{{userData.department}}</div>\
+                            </div>\
+                        </li>\
+                    </ul>\
+                </div>\
+                <div class="list-block no-margin m-t-sm">\
+                    <ul>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h flex-justify-start p-l-lg"">\
+                                <div class="item-title">上级：</div>\
+                                <div class="item-after p-l-sm">{{userData.leader}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h flex-justify-start p-l-lg"">\
+                                <div class="item-title">状态：</div>\
+                                <div class="item-after p-l-sm">{{userData.state}}</div>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h flex-justify-start p-l-lg"">\
+                                <div class="item-title">办公：</div>\
+                                <div class="item-after p-l-sm">{{userData.place}}</div>\
+                            </div>\
+                        </li>\
+                    </ul>\
+                </div>\
+                <div class="list-block no-margin m-t-sm">\
+                    <ul>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h flex-justify-start p-l-lg"">\
+                                <div class="item-title">座机：</div>\
+                                <a :href="\'tel:\' + phone.telephone" class="item-after p-l-sm external">{{phone.telephone}}</a>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h flex-justify-start p-l-lg"">\
+                                <div class="item-title">手机：</div>\
+                                <a :href="\'tel:\' + phone.mobile" class="item-after p-l-sm external">{{phone.mobile}}</a>\
+                            </div>\
+                        </li>\
+                        <li class="item-content bg-white p-l-none">\
+                            <div class="item-inner padder-h flex-justify-start p-l-lg"">\
+                                <div class="item-title">邮箱：</div>\
+                                <a :href="\'mailto:\' + userData.email" class="item-after p-l-sm external">{{userData.email}}</a>\
+                            </div>\
+                        </li>\
+                    </ul>\
+                </div>    \
+            </div>\
+        ',
+        computed: {
+            phone: function() {
+                var userData = this.userData;
+                return {
+                    telephone: userData.telephone == 'null' ? '' : userData.telephone,
+                    mobile: userData.mobile == 'null' ? '' : userData.mobile
                 }
             }
         }
+    });
+
+    
+    // 资讯 - 列表页 - 单条
+    Vue.component('info-common-list', {
+        props: ['item'],
+        template: '\
+            <a class="card-link" :href="\'./detail.html?id=\' + item.id">\
+                <div class="card no-margin no-radius no-shadow">\
+                    <div class="card-header">\
+                        <span>{{item.time}}</span>\
+                        <span>{{item.author}}</span>\
+                    </div>\
+                    <div class="card-content">\
+                        <div class="card-content-inner">{{item.content}}</div>\
+                    </div>\
+                </div>\
+            </a>\
+        '
+    });
+
+    // 资讯 - 详情页
+    Vue.component('info-detail', {
+        props: ['dataSource'],
+        template: '\
+            <div>\
+                <h2 class="no-margin">{{dataSource.title}}</h2>\
+                <div class="p-t-sm p-b b-b-1">\
+                    <span class="color-gray">{{dataSource.author}}</span>\
+                    <span class="m-l color-gray">{{dataSource.time}}</span>\
+                </div>\
+                <div class="padder-v">{{dataSource.content}}</div>\
+            </div>\
+        '
     });
 });

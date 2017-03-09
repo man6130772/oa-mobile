@@ -51,3 +51,36 @@ document.addEventListener("DOMContentLoaded", function() {
     script.setAttribute('src', reqSrc);
     document.getElementsByTagName('head')[0].appendChild(script);
 }, false);
+
+
+// 登录检测
+function checkLogined() {
+    var loginState = 0;
+    if (typeof localStorage.getItem('loginState')) {
+        loginState = +localStorage.getItem('loginState');
+    }
+
+    if (window.location.href.indexOf('login.') > 0) {
+        if (loginState) window.location.href = '../login/index.html';
+    } else {
+        if (!loginState) window.location.href = '../login/login.html';
+    }
+}
+
+// 判断系统类型
+function getTerminalSystem() {
+    var u = navigator.userAgent;
+    // var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if(isIOS) return true; 
+}
+
+// 对ios系统加高状态栏
+function setHeaderHeight() {
+    var isIOS = getTerminalSystem();
+
+    if(isIOS && $('header.bar')[0]) {
+        $('html').css('background-color', '#0894ec');
+        $('body').css('top', '1rem');
+    }
+}

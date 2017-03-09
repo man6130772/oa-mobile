@@ -1,12 +1,14 @@
 define(['vue', 'css!iconfont', 'css!commoncss', 'css!settingIndexCSS', 'common', 'vue.template'], function(Vue) {
     function page() {
-        var that = this;
-        var personInfo;
+        var that = this,
+            eventType,
+            personInfo;
 
-        this.init = function() {
+        this.init = function(e) {
+            // 判断初始化事件type
+            eventType = e.type;
             checkLogined();
-            console.log(personInfo)
-            if(!personInfo) personInfo = that.render('personInfo');
+            personInfo = (eventType == 'pageReinit' ? personInfo : that.render('personInfo'));
             that.ajaxData(ajaxUrl.personInfo, personInfo);
 
             that.clearCacheClick();
@@ -24,9 +26,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!settingIndexCSS', 'common',
 
         this.ajaxData = function(url, vm) {
             ajaxData('GET', url, function(data) {
-                console.log('vm', vm)
                 vm.data = data;
-                console.log(data)
             });
         };
 
