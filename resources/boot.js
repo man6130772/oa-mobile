@@ -61,9 +61,9 @@ function checkLogined() {
     }
 
     if (window.location.href.indexOf('login.') > 0) {
-        if (loginState) window.location.href = '../login/index.html';
+        if (loginState) window.location.href = '../home/index.html';
     } else {
-        if (!loginState) window.location.href = '../login/login.html';
+        if (!loginState) window.location.href = '../home/login.html';
     }
 }
 

@@ -23,7 +23,7 @@ define(['css!loginCSS', 'css!iconfont', 'common', 'vue'], function() {
                             // if(explorer.indexOf("Safari") >= 0){
                             //     var indexUrl = '//' + location.hostname + '/pages/login/index.html';
                             //     console.log('#?uername=' + username + '&password=' + password + '&url=' + indexUrl);
-                            //     location.href = '#?uername=' + username + '&password=' + password + '&url=' + indexUrl;
+                            //     location.href = '#?uername=' + username + '&password=' + password + '&indexUrl=' + indexUrl;
                             //     return;
                             // }
 

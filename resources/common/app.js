@@ -25,8 +25,8 @@ require.config({
 
         /**** 注册js ****/
         // 登陆
-        'login': './js/login/login' + min,
-        'index': './js/login/index' + min,
+        'login': './js/home/login' + min,
+        'index': './js/home/index' + min,
         // 流程
         'flowIndex': './js/flow/index' + min,
         'mystandby': './js/flow/mystandby' + min,
@@ -66,8 +66,8 @@ require.config({
 
         /**** 注册css ****/
         // 登陆
-        'loginCSS': './css/login/login' + min,
-        'indexCSS': './css/login/index' + min,
+        'loginCSS': './css/home/login' + min,
+        'indexCSS': './css/home/index' + min,
         // 流程
         'flowIndexCSS': './css/flow/index' + min,
         'mystandbyCSS': './css/flow/mystandby' + min,
