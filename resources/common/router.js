@@ -23,9 +23,10 @@ define(function() {
         // 设置s
         settingIndex: ['pageInit', 'pageReinit'],
         msgSetting: ['pageInit'],
-        personalInfo: ['pageInit'],
+        personalInfo: ['pageInit', 'pageReinit'],
         pwdChange: ['pageInit'],
         userChange: ['pageInit'],
+        infoChange: ['pageInit'],
         // 设置e
         // 通讯录s
         contactsIndex: ['pageInit', 'pageReinit'],
@@ -38,6 +39,12 @@ define(function() {
         noticePublish: ['pageInit'],
         infoDetail: ['pageInit'],
         // 资讯e
+        // 会议s
+        meetingIndex: ['pageInit'],
+        roomSelect: ['pageInit'],
+        roomBook: ['pageInit'],
+        myMeeting: ['pageInit'],
+        // 会议e
     };
 
     return config;

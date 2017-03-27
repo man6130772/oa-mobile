@@ -27,14 +27,10 @@
             <div class="content-block m-b-none p-l-none p-r-none">
                 <div class="tabs">
                     <div id="unread" class="tab active">
-                        <div class="app-list-panel">
-                            <info-common-list  v-for="item in data" :item="item"></info-common-list>
-                        </div>
+                        <info-common-list :data="data"></info-common-list>
                     </div>
                     <div id="read" class="tab">
-                        <div class="app-list-panel">
-                            <info-common-list  v-for="item in data" :item="item"></info-common-list>
-                        </div>
+                        <info-common-list :data="data"></info-common-list>
                     </div>
                 </div>
             </div>

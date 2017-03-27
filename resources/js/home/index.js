@@ -3,7 +3,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!indexCSS', 'common', 'swipe
         var that = this;
         this.init = function() {
             // eruda.init();
-            $.showIndicator();
+            // $.showIndicator();
             var portalShow = that.render('portalShow');
             that.ajaxData(ajaxUrl.portal, portalShow);
         };
@@ -20,10 +20,10 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!indexCSS', 'common', 'swipe
         this.ajaxData = function(url, vm) {
             ajaxData('GET', url, function(data) {
                 vm.data = data;
-                $.hideIndicator();
+                // $.hideIndicator();
                 vm.$nextTick(function(){   //for渲染完成的回调
                     that.initSwiper();
-                })
+                });
             })
         };
 

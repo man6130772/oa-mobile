@@ -1,4 +1,4 @@
-define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS', 'vue.template'], function(Vue) {
+define(['vue', 'css!iconfont', 'css!commoncss', 'css!leftdetailsCSS', 'common', 'vue.template'], function(Vue) {
     function page() {
         var that = this;
 

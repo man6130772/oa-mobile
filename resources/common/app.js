@@ -50,6 +50,7 @@ require.config({
         'personalInfo': './js/setting/personalInfo' + min,
         'pwdChange': './js/setting/pwdChange' + min,
         'userChange': './js/setting/userChange' + min,
+        'infoChange': './js/setting/infoChange' + min,
         // 设置e
         // 通讯录s
         'contactsIndex': './js/contacts/index' + min,
@@ -63,6 +64,12 @@ require.config({
         'noticePublish': './js/info/noticePublish' + min,
         'infoDetail': './js/info/detail' + min,
         // 资讯e
+        // 会议s
+        'meetingIndex': './js/meeting/index' + min,
+        'roomSelect': './js/meeting/roomSelect' + min,
+        'roomBook': './js/meeting/roomBook' + min,
+        'myMeeting': './js/meeting/myMeeting' + min,
+        // 会议e
 
         /**** 注册css ****/
         // 登陆
@@ -88,6 +95,7 @@ require.config({
         'personalInfoCSS': './css/setting/personalInfo' + min,
         'pwdChangeCSS': './css/setting/pwdChange' + min,
         'userChangeCSS': './css/setting/userChange' + min,
+        'infoChangeCSS': './css/setting/infoChange' + min,
         // 设置e
         // 通讯录s
         'contactsIndexCSS': './css/contacts/index' + min,
@@ -98,6 +106,12 @@ require.config({
         'infoCommonListCSS': './css/info/infoCommonList' + min,
         'infoDetailCSS': './css/info/detail' + min,
         // 资讯e
+        // 会议s
+        'meetingIndexCSS': './css/meeting/index' + min,
+        'roomSelectCSS': './css/meeting/roomSelect' + min,
+        'roomBookCSS': './css/meeting/roomBook' + min,
+        'myMeetingCSS': './css/meeting/myMeeting' + min,
+        // 会议e
     },
     shim: {
         'ui': {

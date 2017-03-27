@@ -4793,7 +4793,8 @@
                     arr, i, len, mouseHandler;
 
                 input.attr('type', 'file');
-                input.attr('capture', 'camera');
+                // 默认不让调用相机，去选择文件，屏蔽此处 lixp0324
+                // input.attr('capture', 'camera');
                 input.attr('name', opts.name);
                 input.addClass('webuploader-element-invisible');
 

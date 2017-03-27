@@ -1,0 +1,80 @@
+{
+    "id": "451546",
+    "name": "666会议室",
+    "video": "1",
+    "stateList": [0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0],
+    "detailList": [
+        {
+            "topic": "OA会议1",
+            "time": "08:00-09:00",
+            "date": "2017-03-23",
+            "convener": {
+                "name": "张林",
+                "section": "信息集团中心",
+                "jobPosition": "实施工程师",
+                "telephone": "0755-26823393",
+                "mobile": "158 5555 5555"
+            }
+        },
+        {
+            "topic": "OA会议2",
+            "time": "08:00-09:00",
+            "date": "2017-03-23",
+            "convener": {
+                "name": "张林",
+                "section": "信息集团中心",
+                "jobPosition": "实施工程师",
+                "telephone": "0755-26823393",
+                "mobile": "158 5555 5555"
+            }
+        },
+        {
+            "topic": "OA会议e3",
+            "time": "08:00-09:00",
+            "date": "2017-03-23",
+            "convener": {
+                "name": "张林",
+                "section": "信息集团中心",
+                "jobPosition": "实施工程师",
+                "telephone": "0755-26823393",
+                "mobile": "158 5555 5555"
+            }
+        },
+        {
+            "topic": "OA会议3",
+            "time": "08:00-09:00",
+            "date": "2017-03-23",
+            "convener": {
+                "name": "张林",
+                "section": "信息集团中心",
+                "jobPosition": "实施工程师",
+                "telephone": "0755-26823393",
+                "mobile": "158 5555 5555"
+            }
+        },
+        {
+            "topic": "OA会议3",
+            "time": "08:00-09:00",
+            "date": "2017-03-23",
+            "convener": {
+                "name": "张林",
+                "section": "信息集团中心",
+                "jobPosition": "实施工程师",
+                "telephone": "0755-26823393",
+                "mobile": "158 5555 5555"
+            }
+        },
+        {
+            "topic": "OA会议3",
+            "time": "08:00-09:00",
+            "date": "2017-03-23",
+            "convener": {
+                "name": "张林",
+                "section": "信息集团中心",
+                "jobPosition": "实施工程师",
+                "telephone": "0755-26823393",
+                "mobile": "158 5555 5555"
+            }
+        }
+    ]
+}

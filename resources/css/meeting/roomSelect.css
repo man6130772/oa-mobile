@@ -1,0 +1,97 @@
+#roomSelect .swiper-container {
+    padding-bottom: 0; 
+}
+
+#roomSelect h1 input {
+    width: 6.8rem;
+}
+#roomSelect h1 span {
+    font-size: 0.45rem;
+    position: relative;
+    top: -0.1rem;
+}
+
+#roomSelect table caption {
+    background: #fff;
+    height: 3rem;
+    line-height: 3rem;
+    border-bottom: 1px solid #eee;
+    color: #000;
+}
+
+#roomSelect table td {
+    height: 4.2rem;
+    text-align: center;
+    color: #DDDDDD;
+    position: relative;
+}
+
+#roomSelect table td::after {
+    content: "";
+    display: block;
+    width: 70%;
+    height: 4px;
+    background-color: #DDDDDD;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 0.8rem;
+}
+
+
+#roomSelect table td.active {
+    color: #2D68AB;
+}
+
+#roomSelect table td.active::after {
+    display: none;
+}
+
+#roomSelect .meeting-explain {
+    padding: 1rem 5rem 2rem;
+}
+
+#roomSelect .meeting-grid {
+    width: 0.85rem;
+    height: 0.85rem;
+    border: 1px solid #D2D2D2;
+}
+#roomSelect .meeting-grid.active {
+    background-color: #fff; 
+    border: 1px solid #ABCAEF;
+}
+
+#roomSelect .item-content + .item-content {
+    margin-top: 0.5rem;
+}
+
+#roomSelect .item-title {
+    flex: 6;
+}
+#roomSelect .item-after {
+    flex: 2;
+    display: block;
+    text-align: center;
+}
+#roomSelect .icon-dianhua {
+    flex: 1;
+    text-align: right;
+}
+
+.popover-inner h3 {
+    max-width: 10rem;
+    margin: 0;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-inner {
+    padding: 1.2rem 1.5rem;
+}
+.modal-inner .phone-number {
+    flex: 7;
+}
+.modal-inner a.iconfont {
+    flex: 1.5;
+}

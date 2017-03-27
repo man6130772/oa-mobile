@@ -25,6 +25,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!infoCommonListCSS', 'common
         this.ajaxData = function(url, vm, params) {
             ajaxData('GET', url, function(data) {
                 vm.data = data;
+                $('.no-data-tip').show();
             }, params);
         };
 

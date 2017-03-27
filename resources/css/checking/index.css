@@ -46,6 +46,10 @@
     height: 14.3rem;
 }
 
+#checkingIndex .list-block {
+    margin: 1rem 0;
+}
+
 #checkingIndex .list-block .item-media + .item-inner {
     margin-left: .35rem;
 }

@@ -1,4 +1,4 @@
-define(['vue','css!iconfont', 'css!commoncss', 'css!checkingAbnormalCSS', 'vue.template'], function(Vue) {
+define(['vue','css!iconfont', 'css!commoncss', 'css!checkingAbnormalCSS', 'common', 'vue.template'], function(Vue) {
     function page() {
         var that = this;
 
@@ -9,12 +9,12 @@ define(['vue','css!iconfont', 'css!commoncss', 'css!checkingAbnormalCSS', 'vue.t
             this.initDate();
 
             var abnormalInfo = that.render('abnormalInfo');
-            that.ajaxData('../../resources/json/abnormalInfo.json', abnormalInfo);
+            that.ajaxData(ajaxUrl.abnormalInfo, abnormalInfo, { 'time': that.showYear + '-' + that.showMonth });
         };
 
         this.initDate = function() {
-            that.showYear = this.getQueryString('year') || new Date().getFullYear();
-            that.showMonth = this.getQueryString('month') || (new Date().getMonth() + 1);
+            that.showYear = getQueryString('year') || new Date().getFullYear();
+            that.showMonth = getQueryString('month') || (new Date().getMonth() + 1);
             // console.log(that)
             
             $('#abnormalDate').html(that.showYear + '年' + that.showMonth + '月');
@@ -29,25 +29,16 @@ define(['vue','css!iconfont', 'css!commoncss', 'css!checkingAbnormalCSS', 'vue.t
             });
         };
 
-        this.ajaxData = function(url, vm) {
-            $.getJSON(url, function(data) {
+        this.ajaxData = function(url, vm, params) {
+            ajaxData('GET', url, function(data) {
                 vm.data = data;
-            });
+            }, params);
         };
 
         this.handleBackClick = function() {
             $('.app-btn-back').off('click').on('click', function() {
                 history.back();
             });
-        };
-
-        this.getQueryString = function(name) {
-            var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) {
-                return unescape(r[2]);
-            }
-            return null;
         };
     }
     return new page();

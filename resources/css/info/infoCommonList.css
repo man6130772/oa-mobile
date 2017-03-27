@@ -1,3 +1,5 @@
+#news .bar-header-secondary ~ .content,
+#noticePublish .bar-header-secondary ~ .content,
 #infoPublish .bar-header-secondary ~ .content {
     top: 2.8rem;
 }
@@ -35,4 +37,8 @@ a.card-link:link .card-content-inner {
 
 a.card-link:visited {
     color: #A5A5A5;
+}
+
+.no-data-tip {
+    display: none;
 }

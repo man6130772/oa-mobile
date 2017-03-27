@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>会议</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="../../resources/boot.js"></script>
+</head>
+
+<body style="display: none;">
+    <div class="page" id="roomSelect">
+        <header class="bar bar-nav bg-blue b-b-none">
+            <button class="app-btn-back button button-link button-nav pull-left color-white">
+                <span class="icon icon-left"></span>
+            </button>
+            <a href="#" class="button pull-right text-white no-border text-l">我的</a>
+            <h1 class="title text-white">
+                <input type="text" id='mTopPicker' class="bg-transparent no-border text-center" />
+                <span class="icon icon-caret"></span>
+            </h1>
+        </header>
+        <div class="content" id="roomSelectCon">
+
+            <select-time :room-data="data"></select-time>
+
+            <div class="meeting-explain flex-box flex-justify-space full-width">
+                <div class="flex-box flex-items-center">
+                    <div class="meeting-grid m-r-s"></div>
+                    <div>占用</div>
+                </div>
+                <div class="flex-box flex-items-center">
+                    <div class="meeting-grid m-r-s active"></div>
+                    <div>空闲</div>
+                </div>
+            </div>
+
+            <room-use-list :detail-list="data.detailList"></room-use-list>
+
+        </div>
+    </div>
+
+    <div id="meetingPopover">
+        <meeting-popover :popover-data="data"></meeting-popover>
+    </div>
+</body>
+
+</html>

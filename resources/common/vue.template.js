@@ -341,18 +341,15 @@ define(['vue'], function(Vue) {
     });
 
     // 考勤 - 考勤流水 - item
-    // //0 正常； 1全天未打卡； 2 上午未打卡； 3 下午未打卡
+    // 0 正常； 1全天未打卡； 2 上午未打卡； 3 下午未打卡
     Vue.component('punchwater-item', {
         props: ['item'],
         template: '\
-            <tr v-bind:class="{ \'abnormal-list\': item.state > 0 }">\
+            <tr v-bind:class="{ \'abnormal-list\': item.state }">\
                 <td>{{item.data}}</td>\
-                <td v-if="item.state == 0">正常</td>\
-                <td v-if="item.state == 1">全天未打卡</td>\
-                <td v-if="item.state == 2">上午未打卡</td>\
-                <td v-if="item.state == 3">下午未打卡</td>\
-                <td v-if="item.state == 0 "></td>\
-                <td v-else="item.state > 0 ">\
+                <td v-if="!item.state">正常</td>\
+                <td v-else>全天未打卡</td>\
+                <td v-if="item.state">\
                     <a href="#">刷卡说明</a><a href="#">请假</a>\
                 </td>\
             </tr>\
@@ -379,11 +376,17 @@ define(['vue'], function(Vue) {
         props: ['userData'],
         template: '\
             <div>\
-                <img class="user-header" :src="userData.headerImg"></img>\
+                <img class="user-header" :src="headerImg"></img>\
                 <div class="user-name text-center text-xxl m-t-xs">{{userData.name}}</div>\
-                <div class="user-position text-center">{{userData.section}} {{userData.jobPosition}}</div>\
+                <div class="user-position text-center text-m">{{userData.section}} - {{userData.jobPosition}}</div>\
             </div>\
-        '
+        ',
+        computed: {
+            headerImg: function() {
+                var userData = this.userData;
+                return userData.headerImg ? userData.headerImg : '../../resources/images/avatar.png';
+            }
+        }
     });
 
     // 设置 - 个人资料 - 整页
@@ -394,27 +397,27 @@ define(['vue'], function(Vue) {
                 <div class="list-block no-margin">\
                     <ul>\
                         <li class="item-content item-link header-list bg-white p-l-none">\
-                            <div class="item-inner padder-h">\
+                            <div id="uploader" class="item-inner padder-h">\
                                 <div class="item-title">头像</div>\
-                                <img class="item-after user-header" :src="tableSource.headerImg">\
+                                <div id="headImg"><img class="item-after user-header" :src="headerImg"></div>\
                             </div>\
                         </li>\
                         <li class="item-content item-link bg-white p-l-none">\
                             <div class="item-inner padder-h">\
                                 <div class="item-title">座机</div>\
-                                <div class="item-after">{{tableSource.telephone}}</div>\
+                                <a href="./infoChange.html?name=telephone" class="item-after">{{tableSource.telephone}}</a>\
                             </div>\
                         </li>\
                         <li class="item-content item-link bg-white p-l-none">\
                             <div class="item-inner padder-h">\
                                 <div class="item-title">手机</div>\
-                                <div class="item-after">{{tableSource.mobile}}</div>\
+                                <a href="./infoChange.html?name=mobile"  class="item-after">{{tableSource.mobile}}</a>\
                             </div>\
                         </li>\
                         <li class="item-content item-link bg-white p-l-none">\
                             <div class="item-inner padder-h">\
                                 <div class="item-title">邮箱</div>\
-                                <div class="item-after">{{tableSource.email}}</div>\
+                                <a href="./infoChange.html?name=email" class="item-after">{{tableSource.email}}</a>\
                             </div>\
                         </li>\
                     </ul>\
@@ -470,7 +473,13 @@ define(['vue'], function(Vue) {
                     </ul>\
                 </div>\
             </div>\
-        '
+        ',
+        computed: {
+            headerImg: function() {
+                var tableSource = this.tableSource;
+                return tableSource.headerImg ? tableSource.headerImg : '../../resources/images/avatar.png';
+            }
+        }
     });
 
     // 设置 - 切换账号 - list
@@ -489,7 +498,7 @@ define(['vue'], function(Vue) {
         '
     });
 
-    //logined - 首页
+    //index - 首页
     Vue.component('portal-show', {
         props: ['dataSource'],
         template: '\
@@ -540,7 +549,7 @@ define(['vue'], function(Vue) {
                     </div>\
                 </div>\
                 <div class="app-list-panel m-t-sm" :class="{hidden: !dataLen.noticeLen}">\
-                    <div class="app-subtitle list-block m-t-none m-b-none">\
+                    <a href="../info/noticePublish.html" class="app-subtitle list-block m-t-none m-b-none">\
                         <ul class="b-t-none b-b-none">\
                             <li class="item-content item-link p-l-xxs">\
                                 <div class="item-media">\
@@ -551,11 +560,11 @@ define(['vue'], function(Vue) {
                                 </div>\
                             </li>\
                         </ul>\
-                    </div>\
+                    </a>\
                     <div class="list-block sortable-opened m-t-none m-b-none">\
                         <ul class="b-t-none b-b-none">\
                             <li v-for="item in dataSource.notice"  class="item-content item-link p-l-xxs">\
-                                <a :href="\'a.html?id=\' + item.id" class="item-inner p-r-xxs color-default">\
+                                <a :href="\'../info/detail.html?id=\' + item.id" class="item-inner p-r-xxs color-default">\
                                     <div class="item-title" :class="{dot: item.state == 0}">{{item.title}}</div>\
                                     <div class="item-after color-gray">{{item.date}}</div>\
                                 </a>\
@@ -746,19 +755,22 @@ define(['vue'], function(Vue) {
     
     // 资讯 - 列表页 - 单条
     Vue.component('info-common-list', {
-        props: ['item'],
+        props: ['data'],
         template: '\
-            <a class="card-link" :href="\'./detail.html?id=\' + item.id">\
-                <div class="card no-margin no-radius no-shadow">\
-                    <div class="card-header">\
-                        <span>{{item.time}}</span>\
-                        <span>{{item.author}}</span>\
+            <div class="app-list-panel">\
+                <div v-if="!data.length" class="text-center no-data-tip">暂无相关数据</div>\
+                <a v-else v-for="item in data" :item="item" class="card-link" :href="\'./detail.html?id=\' + item.id">\
+                    <div class="card no-margin no-radius no-shadow">\
+                        <div class="card-header">\
+                            <span>{{item.time}}</span>\
+                            <span>{{item.author}}</span>\
+                        </div>\
+                        <div class="card-content">\
+                            <div class="card-content-inner">{{item.content}}</div>\
+                        </div>\
                     </div>\
-                    <div class="card-content">\
-                        <div class="card-content-inner">{{item.content}}</div>\
-                    </div>\
-                </div>\
-            </a>\
+                </a>\
+            </div>\
         '
     });
 
@@ -772,7 +784,114 @@ define(['vue'], function(Vue) {
                     <span class="color-gray">{{dataSource.author}}</span>\
                     <span class="m-l color-gray">{{dataSource.time}}</span>\
                 </div>\
-                <div class="padder-v">{{dataSource.content}}</div>\
+                <div class="padder-v" v-html="dataSource.content"></div>\
+            </div>\
+        '
+    });
+
+    // 会议 - 首页 - 区域
+    Vue.component('area-select', {
+        props: ['areaList'],
+        template: '\
+            <div class="swiper-wrapper bg-white">\
+                <div v-for="area in areaList" class="swiper-slide text-center bg-white">{{area}}</div>\
+            </div>\
+        '
+    });
+    
+    // 会议 - 首页 - 列表
+    Vue.component('room-state', {
+        props: ['rooms'],
+        template: '\
+            <div>\
+                <div v-for="room in rooms" class="bg-white meeting-wrapper">\
+                    <a :href="\'./roomSelect.html?id=\' + room.id + \'&date=\' + room.date" class="meeting-room-title color-default">\
+                        {{room.name}}\
+                        <i v-if="room.video" class="iconfont icon-shexiangtou color-limegreen"></i>\
+                    </a>\
+                    <div class="meeting-grid-wrapper flex-box flex-justify-space">\
+                        <a v-for="singleState in room.state" href="#" class="meeting-grid" :class="{active: singleState}"></a>\
+                    </div>\
+                </div>\
+            </div>\
+        '
+    });
+
+    // 会议 - 选择时间 - 时间方格
+    Vue.component('select-time', {
+        props: ['roomData'],
+        template: '\
+            <table>\
+                <caption>\
+                    {{roomData.name}}\
+                    <i v-if="roomData.video" class=" iconfont icon-shexiangtou color-limegreen"></i>\
+                </caption>\
+                <tbody>\
+                    <tr>\
+                        <td :class="{ \'active\' : stateList[0], \'open-popover\' : !stateList[0] }">08:00</td>\
+                        <td :class="{ \'active\' : stateList[1], \'open-popover\' : !stateList[1] }">09:00</td>\
+                        <td :class="{ \'active\' : stateList[2], \'open-popover\' : !stateList[2] }">10:00</td>\
+                        <td :class="{ \'active\' : stateList[3], \'open-popover\' : !stateList[3] }">11:00</td>\
+                    </tr>\
+                    <tr>\
+                        <td :class="{ \'active\' : stateList[4], \'open-popover\' : !stateList[4] }">12:00</td>\
+                        <td :class="{ \'active\' : stateList[5], \'open-popover\' : !stateList[5] }">13:00</td>\
+                        <td :class="{ \'active\' : stateList[6], \'open-popover\' : !stateList[6] }">14:00</td>\
+                        <td :class="{ \'active\' : stateList[7], \'open-popover\' : !stateList[7] }">15:00</td>\
+                    </tr>\
+                    <tr>\
+                        <td :class="{ \'active\' : stateList[8], \'open-popover\' : !stateList[8] }">16:00</td>\
+                        <td :class="{ \'active\' : stateList[9], \'open-popover\' : !stateList[9] }">17:00</td>\
+                        <td :class="{ \'active\' : stateList[10], \'open-popover\' : !stateList[10] }">18:00</td>\
+                        <td :class="{ \'active\' : stateList[11], \'open-popover\' : !stateList[11] }">19:00</td>\
+                    </tr>\
+                </tbody>\
+            </table>\
+        ',
+        computed: {
+            stateList: function() {
+                var roomData = this.roomData;
+                var stateList = roomData.stateList;
+                return stateList || [];
+            }
+        }
+    });
+
+    // 会议 - 选择时间 - 使用列表
+    Vue.component('room-use-list', {
+        props: ['detailList'],
+        template: '\
+            <div class="list-block no-margin">\
+                <ul v-for="item in detailList" class="bg-transparent">\
+                    <li class="item-content bg-white">\
+                        <div class="item-inner no-border">\
+                            <div class="item-title">\
+                                <div class="text-ellipsis">{{item.time}}</div>\
+                                <div class="text-ellipsis">{{item.topic}}</div>\
+                            </div>\
+                            <div v-if="item.convener" class="item-after">{{item.convener.name}}</div>\
+                            <a href="#" class="conPhone iconfont icon-dianhua"></a>\
+                        </div>\
+                    </li>\
+                </ul>\
+            </div>\
+        '
+    });
+
+    // 会议 - 选择时间 - popover
+    Vue.component('meeting-popover', {
+        props: ['popoverData'],
+        template: '\
+            <div class="popover" >\
+                <div class="popover-angle"></div>\
+                <div class="popover-inner padder-h padder-v">\
+                    <h3 class="text-ellipsis text-center">{{popoverData.topic}}</h3>\
+                    <div class="p-t-s padder-sm">\
+                        <div v-if="popoverData.convener">召集人：{{popoverData.convener.name}}</div>\
+                        <div>日期：{{popoverData.date}}</div>\
+                        <div>时间：{{popoverData.time}}</div>\
+                    </div>\
+                </div>\
             </div>\
         '
     });

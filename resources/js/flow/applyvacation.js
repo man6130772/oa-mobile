@@ -85,6 +85,7 @@ define(['vue', 'webuploader', 'swipeout', 'css!webuploadercss', 'css!iconfont', 
                 text: '<span class="iconfont icon-dui color-limegreen icon-big p-r-sm"></span>提交成功！',
                 afterText: '<p class="app-modal-remarks"><span id="backCount" class="color-red">2</span> 秒后跳转【创建流程】</p>'
             });
+            return
             var timer = setInterval(function() {
                 var count = $('#backCount').text();
                 if (count > 0) $('#backCount').text(--count);
@@ -114,7 +115,8 @@ define(['vue', 'webuploader', 'swipeout', 'css!webuploadercss', 'css!iconfont', 
                 chunked: true,
 
                 // 文件接收服务端。
-                server: 'http://' + location.host + '/fileupload',
+                // server: 'http://' + location.host + '/fileupload',
+                server: 'http://172.17.194.42:8088/BelleOA_Moblie_0.1/uploadImage.do',
 
                 // 选择文件的按钮。可选。
                 // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -150,7 +152,9 @@ define(['vue', 'webuploader', 'swipeout', 'css!webuploadercss', 'css!iconfont', 
 
                     // 单位字节，如果图片大小小于此值，不会采用压缩。
                     compressSize: 0
-                }
+                },
+
+                withCredentials: true  // 支持CORS跨域带cookie
             });
 
             // 把uploader实例传给jquery

@@ -7,10 +7,10 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!infoCommonListCSS', 'common
             that.handleBackClick();
 
             var unread = that.render('unread');
-            that.ajaxData(ajaxUrl.infoList, unread, { name: 'infoPublish', tab: 'unread' });
+            that.ajaxData(ajaxUrl.infoList, unread, { name: 'noticePublish', tab: 'unread' });
 
             var read = that.render('read');
-            that.ajaxData(ajaxUrl.infoList, read, { name: 'infoPublish', tab: 'read' });
+            that.ajaxData(ajaxUrl.infoList, read, { name: 'noticePublish', tab: 'read' });
         };
 
         this.render = function(id, data) {
@@ -25,6 +25,7 @@ define(['vue', 'css!iconfont', 'css!commoncss', 'css!infoCommonListCSS', 'common
         this.ajaxData = function(url, vm, params) {
             ajaxData('GET', url, function(data) {
                 vm.data = data;
+                $('.no-data-tip').show();
             }, params);
         };
 

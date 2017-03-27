@@ -22,6 +22,10 @@
     background: lightgray
 }
 
+.bg-default {
+    background-color: #F1F1F1;
+}
+
 .bg-transparent {
     background-color: transparent !important;
 }
